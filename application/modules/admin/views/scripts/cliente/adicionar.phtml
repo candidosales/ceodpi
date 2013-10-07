@@ -1,0 +1,81 @@
+
+<style>
+	#finalizar-label{display:none}
+	#outro-element,#finalizar-element{width:20%}
+</style>
+		<!-- Begin one column window -->
+			<div class="onecolumn">
+				<div class="header">
+					<span>Adicionar Cliente</span>
+				</div>
+				<br class="clear"/>
+				<div class="content">
+					 <?=$this->form?>
+					
+				</div>
+			</div>
+<?php echo $this->headScript()->appendFile($this->baseUrl('/js/jquery.maskedinput-1.3.min.js'))
+->appendFile($this->baseUrl('/js/jquery.validate.min.js')); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	 $("#cep").mask("99.999-999");
+	   $("#cpf").mask("999.999.999-99");   
+	   $("#celular").mask("(99) 9999-9999");
+	   $("#data_nasc").mask("99/99/9999"); 
+
+	   function muda(x){
+			if(x == '2'){
+				$('dt#empresa-label,dd#empresa-element').css('display','block');
+				$('dt#instituicao-label,dd#instituicao-element').css('display','none').val(' ');
+			}else if(x == '1'){
+				$('dt#empresa-label,dd#empresa-element').css('display','none').val(' ');
+				$('dt#instituicao-label,dd#instituicao-element').css('display','block');
+			}
+	 }
+
+
+		 var value = $("select[id$='tipo']").val();
+			muda(value);
+
+		 
+		$("select[id$='tipo']").change(function() {
+				var val = $(this).val();
+				muda(val);
+			}); 
+
+	$("#form_adicionar_cliente").validate({
+		rules: {
+			nome: {
+				required: true,
+				minlength: 4
+			},
+			email: {
+				required: true,
+				minlength: 10,
+				email: true
+				
+			},
+			cel: {
+				required: true,
+				minlength: 10
+			},		
+		},
+		messages: {
+			nome: {
+				required: "Por favor, o nome",
+				minlength: "No mínimo 4 caracteres"
+			},
+			email: {
+				required: "Por favor, o e-mail",
+				minlength: "No mínimo 10 caracteres",
+				email: "Por favor, coloque um e-mail válido."
+			},
+			cel: {
+				required: "Por favor, o celular",
+				minlength: "No mínimo 10 caracteres"
+			},
+		}	
+	});
+});
+</script>

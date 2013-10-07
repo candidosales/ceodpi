@@ -1,0 +1,23 @@
+<style>
+	#finalizar-label{display:none}
+	#finalizar-element,#outro-element{width:20%}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".tel").mask("(99) 9999-9999");
+	$('#main-nav li:eq(15) a').addClass('current');
+	$('#main-nav li:eq(15) a ~ ul').css('display','block');
+});
+</script>
+		<!-- Begin one column window -->
+			<div class="onecolumn">
+				<div class="header">
+					<span>Adicionar Usuário</span>
+				</div>
+				<br class="clear"/>
+				<div class="content">
+					 <?=$this->form?>
+				</div>
+			</div>
+ <?php echo $this->headScript()->appendFile($this->baseUrl('/js/jquery.maskedinput-1.3.min.js')); ?>
+ <?php echo $this->headScript()->appendFile($this->baseUrl('/js/jquery.validate.min.js')); ?>

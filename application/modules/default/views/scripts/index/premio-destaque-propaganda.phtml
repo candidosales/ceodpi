@@ -1,0 +1,363 @@
+	<script src="/js/jquery.maskedinput-1.3.min.js" ></script>
+	<script src="/js/jquery.validate.1.8.1.min.js" ></script>
+	<script src="/js/wufoo.js" ></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+
+		 function bloqueia(){
+					    $('h1').html('Obrigado por participar');
+						$('p.sub-titulo').html('<p>Aguarde o resultado </p>');	
+						$('form').remove();		
+			 }
+
+		$("#cpf").mask("999.999.999-99");
+
+		$("#formPremiacao").validate({
+			rules: {
+				nome: {
+					required: true,
+					minlength: 4
+				},
+				sobrenome: {
+					required: true,
+					minlength: 4
+				},
+				cpf: {
+					required: true,
+					minlength: 11
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				agree: "required"
+			},
+			messages: {
+				nome: {
+					required: "Por favor, insira seu nome",
+					minlength: "Seu nome deve conter no mínimo 4"
+				},
+				sobrenome: {
+					required: "Por favor, insira seu nome",
+					minlength: "Seu nome deve conter no mínimo 4"
+				},
+				cpf: {
+					required: "Por favor, insira seu cpf",
+					minlength: "Seu cpf deve conter no mínimo 11"
+				},
+				email: "Por favor insira um e-mail válido",
+				agree: "Please accept our policy"
+			}
+		});
+	});
+	</script>
+	
+	<script>
+	if(<?php echo $this->bloqueiaForm ?>){
+		bloqueia();
+	}
+	</script>
+<section id="content">
+<div id="content-center" class="center">
+<header class="titulo">
+<h1>Prêmio Destaque da Propaganda Piauiense 2012</h1>
+<p class="sub-titulo">Preencha o formulário com o nome dos destaques de cada categoria</p>
+</header>
+<form id="formPremiacao" name="form1" class="wufoo topLabel page" autocomplete="off" enctype="multipart/form-data" method="post" novalidate
+action="">
+
+<ul>
+
+<li id="foli1" class="notranslate      ">
+<label class="desc" id="title1" for="Field1">
+Nome
+<span id="req_1" class="req">*</span>
+</label>
+<div>
+<input id="nome" name="nome" type="text" class="field text medium" value="Nome"  maxlength="255" tabindex="1" required />
+</div>
+<p class="instruct" id="instruct1"><small>Insira seu nome completo</small></p>
+</li>
+<li id="foli3" class="notranslate      ">
+<label class="desc" id="title3" for="Field3">
+E-mail
+<span id="req_3" class="req">*</span>
+</label>
+<div>
+<input id="email" name="email" type="text" class="field text medium" value="candidosg@gmail.com" maxlength="255" tabindex="3" onkeyup="" required />
+</div>
+<p class="instruct" id="instruct3"><small>Insira seu e-mail </small></p>
+</li>
+<li id="foli3" class="notranslate      ">
+<label class="desc" id="title3" for="Field3">
+CPF
+<span id="req_3" class="req">*</span>
+</label>
+<div>
+<input id="cpf" name="cpf" type="text" class="field text medium" value="006.737.443-37" maxlength="255" tabindex="3" onkeyup="" required />
+</div>
+<p class="instruct" id="instruct3"><small>Insira seu CPF </small></p>
+</li>
+
+<li id="foli4" class="notranslate section      ">
+<section>
+<h3 id="title4">
+Destaques
+</h3>
+<div id="instruct4">Escreva os nomes / títulos para cada categoria</div>
+</section>
+</li><li id="foli5" class="notranslate      ">
+<label class="desc" id="title5" for="Field5">
+1) Instituição de Ensino com Curso de Comunicação
+</label>
+<div>
+<input id="value1" name="value1" type="text" class="field text large" value="1" maxlength="255" tabindex="4" onkeyup="" />
+</div>
+<p class="instruct" id="instruct5"><small>Insira a Faculdade ou Instituição de Ensino</small></p>
+</li><li id="foli6" class="notranslate      ">
+<label class="desc" id="title6" for="Field6">
+2) Professor de comunicação
+</label>
+<div>
+<input id="value2" name="value2" type="text" class="field text medium" value="2" maxlength="255" tabindex="5" onkeyup="" />
+</div>
+<p class="instruct" id="instruct6"><small>Insira o nome do professor que mais se destaca</small></p>
+</li><li id="foli7" class="notranslate      ">
+<label class="desc" id="title7" for="Field7">
+3) Agência de publicidade
+</label>
+<div>
+<input id="value3" name="value3" type="text" class="field text medium" value="3" maxlength="255" tabindex="6" onkeyup="" />
+</div>
+<p class="instruct" id="instruct7"><small>Insira o nome da agência que mais se destacou</small></p>
+</li>
+<li id="foli8" class="notranslate      ">
+<label class="desc" id="title8" for="Field8">
+4) Anunciante
+</label>
+<div>
+<input id="value4" name="value4" type="text" class="field text medium" value="4" maxlength="255" tabindex="7" onkeyup="" />
+</div>
+<p class="instruct" id="instruct8"><small>Insira o nome do veículo de comunicação</small></p>
+</li>
+
+<li id="foli8" class="notranslate      ">
+<label class="desc" id="title8" for="Field8">
+5) Produtora de vídeo
+</label>
+<div>
+<input id="value5" name="value5" type="text" class="field text medium" value="5" maxlength="255" tabindex="7" onkeyup="" />
+</div>
+<p class="instruct" id="instruct8"><small>Insira o nome do veículo de comunicação</small></p>
+</li>
+
+<li id="foli9" class="notranslate      ">
+<label class="desc" id="title9" for="Field9">
+6) Produtora de áudio
+</label>
+<div>
+<input id="value6" name="value6" type="text" class="field text medium" value="6" maxlength="255" tabindex="8" onkeyup="" />
+</div>
+<p class="instruct" id="instruct9"><small>Insira o nome do anunciante</small></p>
+</li><li id="foli10" class="notranslate      ">
+<label class="desc" id="title10" for="Field10">
+7) Gráfica
+</label>
+<div>
+<input id="value7" name="value7" type="text" class="field text medium" value="7" maxlength="255" tabindex="9" onkeyup="" />
+</div>
+<p class="instruct" id="instruct10"><small>Insira o nome do cantor ou jinglista</small></p>
+</li><li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+8) Empresa de comunicação visual
+</label>
+<div>
+<input id="value8" name="value8" type="text" class="field text medium" value="8" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+<p class="instruct" id="instruct11"><small>Insira o nome do fotógrafo publicitário que mais se destacou</small></p>
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+9) Redator Publicitário
+</label>
+<div>
+<input id="value9" name="value9" type="text" class="field text medium" value="9" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+<p class="instruct" id="instruct11"><small>Insira o nome da produtora de vídeo</small></p>
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+10) Diretor de Arte
+</label>
+<div>
+<input id="value10" name="value10" type="text" class="field text medium" value="10" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+<p class="instruct" id="instruct11"><small>Insira o nome da produtora de aúdio</small></p>
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+11) Atendimento publicitário
+</label>
+<div>
+<input id="value11" name="value11" type="text" class="field text medium" value="11" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+<p class="instruct" id="instruct11"><small>Insira o nome da gráfica</small></p>
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+12) Profissional de planejamento de comunicação
+</label>
+<div>
+<input id="value12" name="value12" type="text" class="field text medium" value="12" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+13) Profissional de mídia
+</label>
+<div>
+<input id="value13" name="value13" type="text" class="field text medium" value="13" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+14) Profissional de marketing
+</label>
+<div>
+<input id="value14" name="value14" type="text" class="field text medium" value="14" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+15) Profissional de marketing político
+</label>
+<div>
+<input id="value15" name="value15" type="text" class="field text medium" value="15" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+16) Profissional de comunicação digital
+</label>
+<div>
+<input id="value16" name="value16" type="text" class="field text medium" value="16" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+17) Jinglista
+</label>
+<div>
+<input id="value17" name="value17" type="text" class="field text medium" value="17" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+18) Fotográfo publicitário
+</label>
+<div>
+<input id="value18" name="value18" type="text" class="field text medium" value="18" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+19) Veículo de Comunicação Eletrônico (TV, rádio e internet)
+</label>
+<div>
+<input id="value19" name="value19" type="text" class="field text medium" value="19" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+20) Veículo de Comunicação Impresso (jornal e revista)
+</label>
+<div>
+<input id="value20" name="value20" type="text" class="field text medium" value="20" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+21) Empresa de mídia externa (outdoor, placas, painéis)
+</label>
+<div>
+<input id="value21" name="value21" type="text" class="field text medium" value="21" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+22) Profissional de comunicação de veículo
+</label>
+<div>
+<input id="value22" name="value22" type="text" class="field text medium" value="22" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+23) Blog de publicidade
+</label>
+<div>
+<input id="value23" name="value23" type="text" class="field text medium" value="23" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+
+<li id="foli11" class="notranslate      ">
+<label class="desc" id="title11" for="Field11">
+24) Instituto de pesquisa de mercado
+</label>
+<div>
+<input id="value24" name="value24" type="text" class="field text medium" value="24" maxlength="255" tabindex="10" onkeyup="" />
+</div>
+
+</li>
+<li id="foli4" class="notranslate section      ">
+<section class="regulamento">
+<h3 id="title4" >
+Regulamento do prêmio
+</h3>
+<p>Realização: <b>SINAPRO Piauí</b></p>
+<p>Presidente: <b>Breno Brito</b></p>
+<p>Para concorrer o prêmio cada categoria deve receber no mínimo 10 votos. Veja o Regulamento</p>
+<p><b>Prazo de votação de 12 de junho a 02 de julho</b></p>
+</section>
+</li>
+<li class="buttons ">
+<div>
+
+<input id="saveForm" name="saveForm" class="btTxt submit"
+type="submit" value="Enviar"
+/></div>
+</li>
+</ul>
+</form>
+
+	<aside class="right">
+			<?php include('aside.php');?>
+	</aside>
+<div id="debug" style="display:none"></div>
+
+</div>
+</section>

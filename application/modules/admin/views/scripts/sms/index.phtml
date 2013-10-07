@@ -1,0 +1,443 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".celular").mask("(99) 9999-9999");
+	//limite de caracteres
+	$('#from').limit('18','#char');
+	$('#mensagem').limit('103','#char2');
+
+	$("#form_adicionar_cliente").validate({
+		rules: {
+			nome: {
+				required: true,
+				minlength: 4
+			},
+			email: {
+				required: true,
+				minlength: 10,
+				email: true
+				
+			},
+			cel: {
+				required: true,
+				minlength: 10
+			},		
+		},
+		messages: {
+			nome: {
+				required: "Por favor, o nome",
+				minlength: "No mínimo 4 caracteres"
+			},
+			email: {
+				required: "Por favor, o e-mail",
+				minlength: "No mínimo 10 caracteres",
+				email: "Por favor, coloque um e-mail válido."
+			},
+			cel: {
+				required: "Por favor, o celular",
+				minlength: "No mínimo 10 caracteres"
+			},
+		},
+		submitHandler: function(form) {
+			ajax.adicionarCliente($("#form_adicionar_cliente").serialize());
+         } 	
+	});
+
+	$('#novo_grupo').fancybox({
+		'transitionIn'	: 'elastic',
+		'transitionOut'	: 'elastic',
+		'href':"#grupo",
+	});
+
+	$('#salvar_grupo').click(function(){
+			ajax.adicionarGrupo($('#form_adicionar_grupo').serialize());
+		});	
+
+	$('.enviar_mensagem').click(function (){
+			var clientes = '';
+				$(".clientes_grupo:checked").each(function(){
+					clientes = clientes + this.value + ',';
+			});
+			var mensagem = $('#mensagem').val();
+			var assinatura = $('#from').val();
+				ajax.enviarMensagem(clientes,mensagem,assinatura);
+		});
+
+	//Ajax
+	ajax = {
+
+			adicionarCliente:function(dados){
+			       $.ajax({
+		               url:'/admin/cliente/ajax-adicionar-cliente',
+		               dataType:'json',
+		               data: dados,
+		               type:'POST',
+		               beforeSend: function() {	
+						   $('#loading_cliente').css('display','block').html('<p>Aguarde. Salvando cliente...</p><img style="margin:0 auto" src="/img/ajax-loader.gif"/>');
+						},
+		               success: function(data,textStatus){	
+
+							//$('#debug').css('display','block').html(data);
+			               		               
+		            	   if(data.valor=='1'){
+		            		   $('.message').css('display','block').html('<div class="alert_success"><p><img src="/img/icon_accept.png" alt="success" class="mid_align"/>Cliente adicionado com sucesso!</p></div>');
+		            		   ajax.arvoreClientesGrupo();
+				           }else if(data.valor=='0'){
+			            	   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Ocorreu um erro no momento de salvar. Tente novamente ou contate o suporte.</p></div>'); 
+						   } 		 
+		               },
+		               error: function(XMLHttpRequest, textStatus, errorThrown){
+		            	   $('.message').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados.</p></div>'); 
+		            	   alert('loading_cliente, ocorreu um erro na conexão com o banco de dados.');
+						},
+		               complete: function(){
+			            	   $('#loading_cliente').css('display','none');               
+			               }
+		       });
+			},
+
+			adicionarGrupo:function(dados){
+					$.ajax({
+			               url:'/admin/sms/ajax-adicionar-grupo',
+			               dataType:'json',
+			               data: dados,
+			               type:'POST',
+			               beforeSend: function() {	
+							   $.fancybox.close();
+							   $('#loading_cliente').css('display','block').html('<p>Aguarde. Salvando grupo...</p><img style="margin:0 auto" src="/img/ajax-loader.gif"/>');
+			            	   $('#select_grupo').css('display','none');
+							},
+			               success: function(data,textStatus){			               
+			            	   if(data.valor=='1'){
+			            		   $('.message').css('display','block').html('<div class="alert_success"><p><img src="/img/icon_accept.png" alt="success" class="mid_align"/>Grupo adicionado com sucesso!</p></div>'); 
+								   ajax.selectGrupo();
+				               }else if(data.valor=='0'){
+				            	   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Ocorreu um erro no momento de salvar. Tente novamente ou contate o suporte.</p></div>'); 
+					           } 
+			               },
+			               error: function(XMLHttpRequest, textStatus, errorThrown){
+			            	   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados.</p></div>'); 
+			            	   alert('Lamento, ocorreu um erro na conexão com o banco de dados.');
+							},
+			               complete: function(){
+								   $.fancybox.close();
+				            	   $('#loading_cliente').css('display','none');               
+				               }
+			       });
+				},
+
+			selectGrupo:function(){
+					$.ajax({
+						url:'/admin/sms/ajax-select-grupo',
+			        	dataType:'html',
+			        	data:({id:1}),
+			        	type:'POST',
+			            beforeSend: function() {
+						   $('#loading_cliente').css('display','block').html('<p>Aguarde. Carregando grupos...</p><img style="margin:0 auto" src="/img/ajax-loader.gif"/>');
+						   $('#select_grupo').css('display','none');
+						},
+			           success: function(data,textStatus){	               
+			        	   $('#select_grupo').css('display','').html(data);          	              
+			           },
+			           error: function(XMLHttpRequest, textStatus, errorThrown){ 
+			        	   $('.message').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados.</p></div>'); 
+			        	   alert('Lamento, ocorreu um erro na conexão com o banco de dados.');
+						},
+			           complete: function(){
+			            	   $('#loading_cliente').css('display','none');               
+			               }
+					});
+				},
+
+				enviarMensagem:function(clientes,mensagem,assinatura){
+					       $.ajax({
+				               url:'/admin/sms/ajax-enviar-mensagem',
+				               dataType:'html',
+				               data: ({clientes:clientes, mensagem:mensagem, assinatura:assinatura}),
+				               type:'POST',
+				               beforeSend: function() {		
+								   $('#loading_clientes_grupo').css('display','block').html('<p>Aguarde. Enviando mensagem(ns)...</p><img style="margin:0 auto" src="/img/ajax-loader.gif"/>');
+								   $('#clientes_grupo').css('display','none');
+								},
+				               success: function(data,textStatus){	
+						           $('#debug').html(data);
+						           $('.message').css('display','block').html(human.getStatusCode(data));
+						           ajax.arvoreClientesGrupo();
+						           ajax.relatorioGrafico();		 
+				               },
+				               error: function(XMLHttpRequest, textStatus, errorThrown){
+				            	   $('.message').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados.</p></div>'); 
+				            	   alert('loading_cliente, ocorreu um erro na conexão com o banco de dados.');
+								},
+				               complete: function(){
+					            	   $('#loading_clientes_grupo').css('display','none');               
+					               }
+				       });
+					},
+
+				arvoreClientesGrupo:function(){
+					       $.ajax({
+				               url:'/admin/sms/ajax-clientes-por-grupo',
+				               dataType:'html',
+				               data: ({id:1}),
+				               type:'POST',
+				               beforeSend: function() {	
+								   $('#loading_clientes_grupo').css('display','block').html('<p>Aguarde. Carregando clientes...</p><img style="margin:0 auto" src="/img/ajax-loader.gif"/>');
+								   $('#clientes_grupo').css('display','none');
+								},
+				               success: function(data,textStatus){			               
+				            	   $('#clientes_grupo').css('display','').html(data); 
+	
+				            	   $("#browser").treeview({
+										toggle: function() {
+											console.log("%s was toggled.", $(this).find(">span").text());
+										}
+									});
+	
+				            		$('input[name=grupo]').click(function (){
+				            			var checked_status = this.checked; //Captura seu estado, se está marcado ou não
+				            			var id = $(this).attr('id');
+				            			$("input[name=cliente_"+id+"]").each(function(){ this.checked = checked_status; });	
+				            		}); 		 
+				               },
+				               error: function(XMLHttpRequest, textStatus, errorThrown){
+				            	   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados.</p></div>'); 
+				            	   alert('loading_cliente, ocorreu um erro na conexão com o banco de dados.');
+								},
+				               complete: function(){
+					            	   $('#loading_clientes_grupo').css('display','none');               
+					               }
+				       });
+					},
+					
+			   relatorioGrafico:function(){
+					$.get("/admin/sms/ajax-datas-relatorio", function(data){
+						data = JSON.parse(data);
+						Object.size = function(obj) {
+						    var size = 0, key;
+						    for (key in obj) {
+						        if (obj.hasOwnProperty(key)) size++;
+						    }
+						    return size;
+						}
+						
+						var chart;
+						chart = new Highcharts.Chart({
+							chart: {
+								renderTo: 'relatorio',
+								defaultSeriesType: 'line'
+							},
+							title: {
+								text: 'N° de SMS enviados por dia'
+							},
+							subtitle: {
+								text: ''
+							},
+							xAxis: {
+								categories: [data.sms[0].data_envio, data.sms[1].data_envio, data.sms[2].data_envio,
+								             data.sms[3].data_envio, data.sms[4].data_envio, data.sms[5].data_envio,
+								             data.sms[6].data_envio, data.sms[7].data_envio, data.sms[8].data_envio,
+								             data.sms[9].data_envio, data.sms[10].data_envio, data.sms[11].data_envio]
+							},
+							yAxis: {
+								title: {
+									text: 'Quantidade SMS'
+								}
+							},
+							tooltip: {
+								enabled: false,
+								formatter: function() {
+									return '<b>'+ this.series.name +'</b><br/>'+
+										this.x +': '+ this.y ;
+								}
+							},
+							plotOptions: {
+								line: {
+									dataLabels: {
+										enabled: true
+									},
+									enableMouseTracking: false
+								}
+							},
+							series: [{
+								name: 'SMS',
+								data: [data.sms[0].qtd_sms_enviado, data.sms[1].qtd_sms_enviado, data.sms[2].qtd_sms_enviado,
+								       data.sms[3].qtd_sms_enviado, data.sms[4].qtd_sms_enviado, data.sms[5].qtd_sms_enviado,
+								       data.sms[6].qtd_sms_enviado, data.sms[7].qtd_sms_enviado, data.sms[8].qtd_sms_enviado,
+								       data.sms[9].qtd_sms_enviado, data.sms[10].qtd_sms_enviado, data.sms[11].qtd_sms_enviado]
+							}]
+						});
+
+
+						});
+				   }
+		}
+
+
+
+	 /**/
+	
+	//Carrega o select do grupo
+	ajax.selectGrupo();
+	//Carrega os checkbos dos clientes por grupo
+	ajax.arvoreClientesGrupo();
+	//Carrega o relatorio dos SMS
+	ajax.relatorioGrafico();	
+});
+</script>
+
+			<h1>SMS</h1>
+			
+			<!-- Begin shortcut menu -->
+			<ul id="shortcut">
+    			<li>
+    			  <a href="modal_window.html" id="shortcut_home" title="Clique aqui para ir a Home">
+				    <img src="../img/shortcut/home.png" alt="home"/><br/>
+				    <strong>Home</strong>
+				  </a>
+				</li>
+    			<li>
+    			  <a href="modal_window.html" title="Clique aqui para ver os dados dos SMS's">
+				    <img src="../img/shortcut/stats.png" alt="stats"/><br/>
+				    <strong>Estatística</strong>
+				  </a>
+				</li>
+				<!--<li>
+    			  <a href="modal_window.html" title="Click me to open modal window">
+				    <img src="../img/shortcut/setting.png" alt="setting"/><br/>
+				    <strong>Config.</strong>
+				  </a>
+				</li>
+				<li>
+    			  <a href="modal_window.html" id="shortcut_contacts" title="Clique aqui para ver seus clientes">
+				    <img src="../img/shortcut/contacts.png" alt="contacts"/><br/>
+				    <strong>Clientes</strong>
+				  </a>
+				</li>-->
+  			</ul>
+			<!-- End shortcut menu -->
+			<!-- Begin shortcut notification -->
+			<div id="shortcut_notifications">
+				<!-- <span class="notification" rel="shortcut_home">10</span>
+				<span class="notification" rel="shortcut_contacts">5</span> -->
+			</div>
+			<!-- End shortcut noficaton -->			
+			<br class="clear"/>
+		<!-- Begin two column window -->
+			
+			<!-- Begin left column window -->
+			<div class="twocolumn">
+				<div class="column_left">
+					<div class="header">
+						<span>Mensagem</span>
+					</div>
+					<br class="clear"/>
+					<div class="content">						
+						<h2>Faça sua mensagem</h2>
+						<p>
+							<label>Assinatura:</label>
+							<input type="text" name="from" id="from" value="<?=$this->assinatura_sms?>"/>
+							<span id="char"></span>
+						</p><br/>
+						<p>
+							<label class="msg">Mensagem: <span class="msg2">Prezado(a) <u>Cliente</u>,</span></label>
+							<textarea id="mensagem" name="mensagem" rows="5" cols="30">para facilitar o seu credenciamento no curso de criação leve seu comprovante de pagamento. Obrigado!</textarea>
+							<span id="char2"></span>
+							<span class="description">A <b>assinatura</b> com a <b>mensagem</b> podem conter no máximo 140 caracteres.</span>
+						</p>
+						<br/><br/>
+						<h2>Enviar para:</h2>
+						<div id="loading_clientes_grupo" style="display:none"></div>
+						<div id="x" style="display:none"></div>
+						<div id="clientes_grupo">
+						
+						</div>
+						<p>
+							<input type="button" id="btn_modal" class="enviar_mensagem" value="Enviar mensagem"/>
+						</p>
+					</div>
+				</div>
+				<!-- End left column window -->
+				
+				<!-- Begin right column window -->
+				<div class="column_right">
+					<div class="header">
+						<span>Clientes</span>
+					</div>
+					<br class="clear"/>
+					<div class="content">
+						<h2>Cadastro</h2>
+						<div id="loading_cliente" style="display:none"></div>
+						<form id="form_adicionar_cliente" action="#" method="post">
+						<p>
+							<label>Nome:</label>
+							<input type="text" id="nome" name="nome" class="nome"/>
+						</p>
+						<br/>
+						<p>
+							<label>E-mail:</label>
+							<input type="text" id="email" name="email" class="email"/>
+						</p>
+						<br/>
+						<p>
+							<label>Celular:</label>
+							<input type="text" id="celular" name="celular" class="celular"/>
+						</p>
+						<br/>
+						<p>
+							<label>Grupo:</label>
+							<select id="select_grupo" name="grupo_id">
+            	      				<option>Aguarde o carregamento</option>
+            	    		</select>
+							<a class="lft_input" href="#" id="novo_grupo" title="Adicionar grupo">Adicionar novo</a>
+						</p>
+						<br/>
+						<p>
+							<input type="submit" id="btn_modal" value="Salvar"/>
+						</p>
+						<br/>
+						</form>
+					</div>
+				</div>
+				<div class="column_right">
+					<div class="header">
+						<span>Relatório</span>
+					</div>
+					<br class="clear"/>
+					<div class="content">
+						<!-- Onde será apresentado o relatorio -->
+						<div id="relatorio" style="width: 500px; height: 400px; margin: 0 auto">
+						</div>
+					</div>
+				</div>
+				<!-- End right column window -->
+			</div>
+			<!-- End two column window -->
+			<div style="display:none">
+				<div id="grupo">
+					<form id="form_adicionar_grupo" action="#" method="post">
+							<p>
+								<label class="excessao">Nome do grupo:</label>
+								<input type="text" name="nome" class="grupo"/>
+							</p>
+							<br/>
+							<p>
+								<input type="button" id="salvar_grupo" value="Salvar grupo"/>
+							</p>
+					</form>
+				</div>
+			</div>
+			<div id="debug">
+			</div>
+			
+<?php echo $this->headScript()->appendFile($this->baseUrl('/js/jquery.maskedinput-1.3.min.js'))
+->appendFile($this->baseUrl('/js/jquery.validate.min.js'))
+->appendFile($this->baseUrl('/js/jquery.limit-1.2.js'))
+->appendFile($this->baseUrl('/js/fancybox/jquery.fancybox-1.3.4.pack.js'))
+->appendFile($this->baseUrl('/js/jquery.cookie.js'))
+->appendFile($this->baseUrl('/js/jquery.treeview.js'))
+->appendFile($this->baseUrl('/js/highchart/highcharts.js'))
+->appendFile($this->baseUrl('/js/json2.js')); 
+
+	  echo $this->headLink()->appendStylesheet('/js/fancybox/jquery.fancybox-1.3.4.css', 'all');?>
+
+

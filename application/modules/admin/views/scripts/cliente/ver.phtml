@@ -1,0 +1,102 @@
+<script>
+	function confirma(id){
+		if(confirm("Você realmente deseja excluir este cliente?")){
+			location.href='/admin/cliente/deletar/id/'+id;
+		}
+	}
+</script>
+<div class="onecolumn">
+	<div class="header">
+		<span>Ver Cliente</span>
+	</div>
+	<br class="clear"/>
+	<div class="content">
+		<div class="buttons">
+		<ul>
+			<li>
+				<a class="button" title="Voltar para listagem" href="/admin/cliente">
+					<img src="/img/icon/back.png"/>
+				</a>
+			</li>
+			<li>
+				<a class="button" title="Certificado do <?=$this->cliente['nome'] ?>" href="/admin/certificado/export/id/<?=$this->cliente['id'] ?>">
+					<img src="/img/document-stamp.png"/>
+				</a>
+			</li>
+			<li>
+				<a class="button" title="Editar <?=$this->cliente['nome'] ?>" href="/admin/cliente/editar/id/<?=$this->cliente['id'] ?>">
+					<img src="/img/icon/edit.png"/>
+				</a>
+			</li>
+			<li>
+				<a class="button" title="Excluir <?=$this->cliente['nome'] ?>" onclick="confirma(<?=$this->cliente['id']?>)" href="#">
+					<img src="/img/icon/delete.png"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<p class="ver-maior">Pessoal</p>
+	<br>
+	<p class="ver-menor"><b>Nome:</b> <?=$this->cliente['nome'] ?>
+		<br/><b>CPF:</b> <?=$this->cliente['cpf'] ?> 
+		<br/><b>RG:</b> <?=$this->cliente['rg'] ?> 
+		<br/><b>Celular:</b> <?=$this->cliente['celular'] ?>
+		<br/><b>E-mail:</b> <?=$this->cliente['email'] ?>
+		<br/><b>Tipo:</b> <?=$this->cliente['tipo']=='1' ? "DeMolay" : "Maçon"?>
+		
+		<?if($this->cliente['tipo']=='1'){?>
+		<br/><b>Capítulo:</b> <?=$this->cliente['instituicao'] ?>
+		<?}else{?>
+		<br/><b>Loja:</b> <?=$this->cliente['empresa'] ?>
+		<?}?>
+		
+		<br/><b>Filiado:</b> <?=$this->cliente['filiado']=='1' ? "Sim, ao SINAPRO" : "Não"?>
+		
+		<br/><b>Twitter:</b> <?=$this->cliente['twitter'] ?>
+	</p>
+	<br>
+	<p class="ver-maior">Endereço</p>
+	<br>
+	<p class="ver-menor"><b>Logradouro:</b> <?=$this->cliente['endereco'] ?>
+		<br/><b>CEP: </b> <?=$this->cliente['cep'] ?>
+		<br/><b>Cidade: </b> <?=$this->cliente['cidade'] ?>
+		<br/><b>Estado: </b> <?=$this->cliente['estado'] ?>
+		<br/><b>País: </b> <?=$this->cliente['pais'] ?>
+	</p>
+	<br>
+	<p class="ver-maior">Inscrição</p>
+	<br>
+	<p class="ver-menor"><b>Data de inscrição:</b> <?=$this->data_inscricao ?>
+		<br/><b>Data do pagamento: </b> <?=$this->data_confirma_pagamento ?>
+		<br/><b>Tipo de pagamento: </b> <?=$this->tipo_pagamento ?>
+	</p>
+	<p class="ver-menor"><br/>
+				<form id="formInscrito" class="appnitro" name="form_moip" enctype="application/x-www-form-urlencoded" action="https://www.moip.com.br/PagamentoMoIP.do"  method="POST">					
+							<input type="hidden" name="id_carteira" value="yan.walter@gmail.com" />
+						    <input type="hidden" name="nome" value="X Congresso Estadual da Ordem DeMolay Piaui" />
+						    
+						    <input type="hidden" name="descricao" value="X Congresso Estadual da Ordem DeMolay Piaui: Dias 21 a 23 de Setembro - Teresina" />
+						    <input type="hidden" name="id_transacao" value="" />
+						    
+						    <input type="hidden" name="pagador_nome" value="<?=$this->nome?>" />
+						    <input type="hidden" name="pagador_email" value="<?=$this->cliente['email']?>" />
+						    <input type="hidden" name="pagador_cep" value="<?=$this->cep?>" />
+						    <input type="hidden" name="pagador_logradouro" value="<?=$this->endereco?>" />
+						    <input type="hidden" name="pagador_numero" value="1" />
+						    <input type="hidden" name="pagador_cidade" value="<?=$this->cidade?>" />
+						    <input type="hidden" name="pagador_estado" value="PI" />
+						    <input type="hidden" name="pagador_bairro" value=" " />
+						    <input type="hidden" name="pagador_cpf" value="<?=$this->cpf?>" />
+						    <input type="hidden" name="pagador_rg" value="<?=$this->rg?>" />
+						    <input type="hidden" name="pagador_telefone" value="<?=$this->numeroCelular?>" />
+						    
+						    <input type="text" name="valor" value="60000" />
+						    <input id="saveForm" class="button_text" type="submit" name="submit" value="2° via do boleto" />
+				</form>
+				
+				
+				
+				
+		</p>
+	</div>
+</div>

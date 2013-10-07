@@ -1,0 +1,38 @@
+<style>
+	#finalizar-label{display:block}
+	#finalizar-element,#outro-element{width:20%}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".tel").mask("(99) 9999-9999");
+
+	$('#main-nav li:eq(15) a').addClass('current');
+	$('#main-nav li:eq(15) a ~ ul').css('display','block');
+
+});
+function confirma(id) {
+	if(confirm("Você realmente deseja excluir este usuário?")){
+		location.href='/admin/usuario/deletar/id/'+id;
+	}
+}
+</script>
+<div class="onecolumn">
+	<div class="header">
+		<span>Editar Usuário</span>
+	</div>
+	<br class="clear"/>
+	<div class="content">
+		<div class="buttons">
+			<ul>	
+				<li>
+					<a class="button" title="Excluir usuário" onclick="confirma(<?=$this->usuario['id']?>)" href="#">
+						<img src="/img/icon/delete.png"/>
+					</a>
+				</li>
+			</ul>
+		</div>
+		 <?=$this->form?>
+	</div>
+</div>
+  <?php echo $this->headScript()->appendFile($this->baseUrl('/js/jquery.maskedinput-1.3.min.js'))
+							  ->appendFile($this->baseUrl('/js/jquery.validate.min.js')); ?>

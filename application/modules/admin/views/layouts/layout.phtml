@@ -1,0 +1,107 @@
+<?php  echo $this->doctype(); ?>
+
+<html>
+    <head>
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+      
+        <?php flush(); ?>
+        
+        <link href="/css/screen.css" rel="stylesheet" type="text/css" media="all">
+		<link href="/js/visualize/visualize.css" rel="stylesheet" type="text/css" media="all">
+		<link href="/js/fancybox/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css" media="all">
+		
+		<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="/js/ui/jquery-ui-1.8.9.custom.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.img.preload.js"></script>
+		<script type="text/javascript" src="/js/hint.js"></script>
+		<script type="text/javascript" src="/js/visualize/jquery.visualize.js"></script>
+		<script type="text/javascript" src="/js/fancybox/jquery.fancybox-1.3.4.js"></script>
+		<script type="text/javascript" src="/js/jquery.tipsy.js"></script>
+		<script type="text/javascript" src="/js/human.mobile.js"></script>
+		<script type="text/javascript" src="/js/json2.js" ></script> 
+		<script type="text/javascript" src="/js/custom_blue.js"></script>
+		
+		        
+    </head>
+<body>
+     
+<div class="content_wrapper">
+
+	<!-- Begin header -->
+	<div id="header">
+		<div id="logo">
+			<img src="/img/logo.png" alt="logo"/>
+		</div>
+		<div id="search">
+			<form action="/admin/cliente/buscar" method="post" id="search_form" name="search_form">
+				<input type="text" id="q" name="q" title="Buscar em tudo" class="search noshadow"/>
+			</form>
+		</div>
+		<?=$this->profileLink()?>	
+		
+	</div>
+	<!-- End header -->
+	
+	
+	<!-- Begin left panel -->
+	<a href="javascript:;" id="show_menu">&raquo;</a>
+	<div id="left_menu">
+		<a href="javascript:;" id="hide_menu">&laquo;</a>
+		<ul id="main_menu">
+			<li><a href="/admin/"><img src="/img/icon_home.png" alt="Home"/>Home</a></li>
+			<li>
+				<a href=""><img src="/img/user-business-gray.png" alt="Media"/>Clientes</a>
+				<ul>
+					<li><a href="/admin/cliente/adicionar">Cadastrar</a></li>
+					<li><a href="/admin/cliente">Listar</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href=""><img src="/img/user.png" alt="Users"/>Usuários</a>
+				<ul>
+					<li><a href="/admin/usuario/adicionar">Cadastrar</a></li>
+					<li><a href="/admin/usuario">Listar</a></li>
+				</ul>	
+			</li>
+			<li>
+				<a href="/admin/sms"><img src="/img/mobile-phone.png" alt="SMS"/>SMS</a>	
+			</li>
+			<li>
+				<a href="/admin/certificado"><img src="/img/document-stamp.png" alt="Certificados"/>Certificados</a>	
+			</li>
+			<li>
+				<a href="/admin/relatorio"><img src="/img/chart.png" alt="SMS"/>Relatórios</a>	
+			</li>
+		</ul>
+		<br class="clear"/>
+		
+		<!-- Begin left panel calendar -->
+		<div id="calendar"></div>
+		<!-- End left panel calendar -->
+		
+	</div>
+	<!-- End left panel -->
+	
+	
+	<!-- Begin content -->
+	<div id="content">
+		<div class="inner">
+			<div class="message"><?php echo $this->messenger(); ?></div>
+
+				<?php echo $this->layout()->content; ?>
+		</div>
+		<br class="clear"/><br class="clear"/>
+		
+		
+		<!-- Begin footer -->
+		<div id="footer">
+			&copy; Direitos Autorais <? echo date("Y") ?> por <a href="http://www.vendepublicidade.com.br" target="_blank">Vende Publicidade</a>
+		</div>
+		<!-- End footer -->
+	</div>
+	<!-- End content -->
+</div>
+     
+     </body>
+</html>

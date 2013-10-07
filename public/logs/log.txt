@@ -1,0 +1,132 @@
+d{2012/04/28 16:33:19} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 16:33:22} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}901B655CEDEDC7B3345D7F89A52CC26E 
+{2012/04/28 16:33:35} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 16:33:37} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}CA3592D183832CD114617FBD6EE83C3B 
+{2012/04/28 16:33:44} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 16:33:46} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}ED6EBEFD8E8EB29004F68FBBC429D88A 
+{2012/04/28 16:42:43} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 16:42:45} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}27FD10F5A5A56B37745A6F9810CF6507 
+{2012/04/28 18:19:04} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 18:19:06} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11012] - senderName invalid value: Cândido Sales  gomes[11029] - Item amount invalid pattern: 5000. Must fit the patern: \d+.\d{2}  
+{2012/04/28 18:20:36} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 18:20:38} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11029] - Item amount invalid pattern: 5000. Must fit the patern: \d+.\d{2} [11012] - senderName invalid value: Cândido Sales  gomes 
+{2012/04/28 19:25:12} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 19:25:15} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11028] - Item amount is required. (e.g. "12.00")[11012] - senderName invalid value: Cândido Sales  gomes 
+{2012/04/28 19:29:41} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 19:29:44} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}07120419B3B31E3EE4884FB796557CB2 
+{2012/04/28 19:36:57} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 19:37:04} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11029] - Item amount invalid pattern: 230. Must fit the patern: \d+.\d{2}  
+{2012/04/28 19:37:42} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 19:37:43} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}58FFC4AEBABA597CC4D8FFAD7B5BD1FD 
+{2012/04/28 19:40:18} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 19:40:20} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}BE5A7701A9A9D33AA48ADF93ECA14387 
+{2012/04/28 19:41:05} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 19:41:07} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11029] - Item amount invalid pattern: 230. Must fit the patern: \d+.\d{2}  
+{2012/04/28 20:16:06} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 20:16:18} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}AB284FB658587E2004748F8AB6676E9D 
+{2012/04/28 20:22:06} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 20:22:11} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}0AFBF9261616ACCEE43ADF859285F3F0 
+{2012/04/28 20:51:16} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 20:51:19} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - end {1}B96A4687B9B91A8994C2AFA6DD5F39FC 
+{2012/04/28 21:02:45} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/28 21:02:47} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=12,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11029] - Item amount invalid pattern: 230. Must fit the patern: \d+.\d{2}  
+{2012/04/30 10:23:35} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 10:23:55} [Error] Exception: CURL can't connect: couldn't connect to host 
+{2012/04/30 10:24:01} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 10:24:22} [Error] Exception: CURL can't connect: couldn't connect to host 
+{2012/04/30 10:25:41} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 10:25:53} [Error] Exception: CURL can't connect: Could not resolve host: ws.pagseguro.uol.com.br; Host not found 
+{2012/04/30 10:53:42} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 10:53:45} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}5EC8C0F8C4C47AF6645DEF841E27110C 
+{2012/04/30 10:54:42} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 10:54:44} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}45250988A5A539966443DF9FB2A81CEF 
+{2012/04/30 10:56:03} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 10:56:04} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}7F518CC8E6E6BF4994754F890D911A00 
+{2012/04/30 10:56:40} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 10:56:42} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}11B8CA565959203004F17FAC7C1422E4 
+{2012/04/30 11:08:14} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:08:16} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}AA2EBB0A71711D7FF48B7FA621FA5594 
+{2012/04/30 11:10:40} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:10:42} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}E42FF4FD686848FBB4F65F8F20EEE733 
+{2012/04/30 11:11:32} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:11:33} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}ABF99009EAEAEFFEE4F82FBDB5DAA72E 
+{2012/04/30 11:11:41} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:11:42} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}CD8D8CF740401CEDD43D9F971780269B 
+{2012/04/30 11:11:55} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:11:57} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}076D40E93A3A6C9EE4C05F8FB7D94412 
+{2012/04/30 11:12:09} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:12:11} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}3E169CED6D6D034114938FA96ECF81B2 
+{2012/04/30 11:12:20} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:12:21} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}662F8187585852099469EFADD968CA9E 
+{2012/04/30 11:12:31} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:12:33} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}933359EA41411D7004C1CF972F9B351B 
+{2012/04/30 11:12:53} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:12:54} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}E79295BFD6D61F2CC463AF83AD787328 
+{2012/04/30 11:14:13} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:14:18} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}2ED0D24E2D2D263554991FA522E82341 
+{2012/04/30 11:15:08} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:15:11} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}FE0C136F1D1DAB399459DF8586AC71D3 
+{2012/04/30 11:15:20} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:15:21} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}25D69E923F3FBDB4445C3FA37FA71EE0 
+{2012/04/30 11:15:34} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:15:36} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11030] - Item amount out of range: 0.00 
+{2012/04/30 11:27:03} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 11:27:05} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}E51A3BDB8E8E9045541E3FA6B212AF9C 
+{2012/04/30 17:26:52} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 17:26:56} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}591E83266A6AE42884A6BF9DD26D636B 
+{2012/04/30 17:48:29} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 17:48:32} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}1EF1776F5050749CC4B45F8AAFEE794D 
+{2012/04/30 17:53:00} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/04/30 17:53:01} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}3B1C288E333388A334A5DF836D62D994 
+{2012/05/25 15:22:57} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/05/25 15:23:09} [Error] Exception: CURL can't connect: Could not resolve host: ws.pagseguro.uol.com.br; Host not found 
+{2012/05/25 15:25:14} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/05/25 15:25:26} [Error] Exception: CURL can't connect: Could not resolve host: ws.pagseguro.uol.com.br; Host not found 
+{2012/05/25 15:25:33} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/05/25 15:25:45} [Error] Exception: CURL can't connect: Could not resolve host: ws.pagseguro.uol.com.br; Host not found 
+{2012/05/25 15:25:55} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/05/25 15:26:07} [Error] Exception: CURL can't connect: Could not resolve host: ws.pagseguro.uol.com.br; Host not found 
+{2012/05/25 15:26:14} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/05/25 15:26:26} [Error] Exception: CURL can't connect: Could not resolve host: ws.pagseguro.uol.com.br; Host not found 
+{2012/05/25 16:24:11} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/05/25 16:24:16} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}E10E3D7D84840C1994F3DFA76DEE7792 
+{2012/05/25 16:35:08} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/05/25 16:35:10} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}DCB704583636F4CDD4206F8D21192528 
+{2012/05/25 16:35:24} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candido@gmail.com)) - begin 
+{2012/05/25 16:35:25} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candido@gmail.com)) - end {1}16E1C5644B4B484334DB7FBEE04E76AC 
+{2012/06/01 18:35:11} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 18:35:15} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}471105C9B8B8284BB4896FA9AE8D7EFF 
+{2012/06/01 18:35:54} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 18:35:55} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}E525C83414145B0EE4213F8D8B6866C7 
+{2012/06/01 18:39:53} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 18:40:06} [Error] Exception: CURL can't connect: Could not resolve host: ws.pagseguro.uol.com.br; Host not found 
+{2012/06/01 18:41:12} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 18:41:24} [Error] Exception: CURL can't connect: Could not resolve host: ws.pagseguro.uol.com.br; Host not found 
+{2012/06/01 18:41:30} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 18:41:42} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}30062F4708084EACC4A38FA52AAC3ECD 
+{2012/06/01 21:42:34} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 21:42:37} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}D6DADC271F1F9A2884CF2FA3EFA56D34 
+{2012/06/01 21:45:57} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 21:45:58} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}E9ACE979F9F9C5EDD47A1FAF72CF10C9 
+{2012/06/01 22:02:00} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 22:02:01} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11028] - Item amount is required. (e.g. "12.00") 
+{2012/06/01 22:02:14} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 22:02:15} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11028] - Item amount is required. (e.g. "12.00") 
+{2012/06/01 22:03:09} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 22:03:10} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}A828F5C47F7FAC5114418FA0F9178168 
+{2012/06/01 22:04:28} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 22:04:33} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}EA2317CD6363787884E9FFA16E1CB9A8 
+{2012/06/01 22:04:49} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 22:04:50} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - error [HTTP 400] - BAD_REQUEST [11028] - Item amount is required. (e.g. "12.00") 
+{2012/06/01 22:07:02} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/01 22:07:03} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}3554389F0202700EE4583FB869E8CB0F 
+{2012/06/13 01:13:13} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=0,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/13 01:13:16} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=0,     SenderEmail=candidosg@gmail.com)) - end {1}A2F86F18F8F82C6DD4A96FB10374F4F7 
+{2012/06/13 01:24:20} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=0,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/13 01:24:22} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=0,     SenderEmail=candidosg@gmail.com)) - end {1}CE2B6E9D757578644417AF9FD1B7CC03 
+{2012/06/13 01:33:54} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=0,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/13 01:33:56} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=0,     SenderEmail=candidosg@gmail.com)) - end {1}8FDFF452FFFF752224B6CFB83136C487 
+{2012/06/13 01:36:17} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=0,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/13 01:36:19} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=0,     SenderEmail=candidosg@gmail.com)) - end {1}BE0F38AA0C0C2964449F9FB18CB7F5BD 
+{2012/06/13 01:37:51} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - begin 
+{2012/06/13 01:37:53} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest(Reference=2,     SenderEmail=candidosg@gmail.com)) - end {1}2C78F889646402355431AF829880731D 

@@ -1,0 +1,444 @@
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+
+
+var arrayMapa = null;
+
+//Ajax
+ajax = {
+
+			totalClientePorEstado:function(){
+				$.get("/admin/cliente/ajax-total-cliente-categoria-estado", function(data){
+
+					//alert(data);
+					//$('#debug').css('display','block').html(data);
+					data = JSON.parse(data);
+					
+					arrayMapa = data;
+				});
+		   },
+				
+		   relatorioGrafico:function(){
+				$.get("/admin/cliente/ajax-datas-relatorio?data=12", function(data){
+
+					//alert(data);
+					//$('#debug').css('display','block').html(data);
+				
+					data = JSON.parse(data);
+					Object.size = function(obj) {
+					    var size = 0, key;
+					    for (key in obj) {
+					        if (obj.hasOwnProperty(key)) size++;
+					    }
+					    return size;
+					}
+					
+					var chart;
+					chart = new Highcharts.Chart({
+						chart: {
+							renderTo: 'relatorio',
+							type: 'line'
+						},
+						title: {
+							text: 'N° de inscritos/pagos por dia'
+						},
+						subtitle: {
+							text: ''
+						},
+						xAxis: {
+							categories: [data.inscrito[0].data_inscricao, data.inscrito[1].data_inscricao, data.inscrito[2].data_inscricao,
+							             data.inscrito[3].data_inscricao, data.inscrito[4].data_inscricao, data.inscrito[5].data_inscricao,
+							             data.inscrito[6].data_inscricao, data.inscrito[7].data_inscricao, data.inscrito[8].data_inscricao,
+							             data.inscrito[9].data_inscricao, data.inscrito[10].data_inscricao, data.inscrito[11].data_inscricao]
+						},
+						yAxis: {
+							title: {
+								text: 'Quantidade de Inscritos/Pagos'
+							}
+						},
+						tooltip: {
+							enabled: false,
+							formatter: function() {
+								return '<b>'+ this.series.name +'</b><br/>'+
+									this.x +': '+ this.y ;
+							}
+						},
+						plotOptions: {
+							line: {
+								dataLabels: {
+									enabled: true
+								},
+								enableMouseTracking: false
+							}
+						},
+						legend: {
+								layout: 'vertical',
+								align: 'right',
+								verticalAlign: 'top',
+								x: -100,
+								y: 100,
+								floating: true,
+								borderWidth: 1,
+								backgroundColor: '#FFFFFF',
+								shadow: true
+							},
+						series: [{
+							name: 'Inscritos',
+							data: [data.inscrito[0].qtd_clientes_inscritos, data.inscrito[1].qtd_clientes_inscritos, data.inscrito[2].qtd_clientes_inscritos,
+							       data.inscrito[3].qtd_clientes_inscritos, data.inscrito[4].qtd_clientes_inscritos, data.inscrito[5].qtd_clientes_inscritos,
+							       data.inscrito[6].qtd_clientes_inscritos, data.inscrito[7].qtd_clientes_inscritos, data.inscrito[8].qtd_clientes_inscritos,
+							       data.inscrito[9].qtd_clientes_inscritos, data.inscrito[10].qtd_clientes_inscritos, data.inscrito[11].qtd_clientes_inscritos]
+						},{
+							name: 'Pagos',
+							data: [data.pago[0].qtd_clientes_pagos, data.pago[1].qtd_clientes_pagos, data.pago[2].qtd_clientes_pagos,
+							       data.pago[3].qtd_clientes_pagos, data.pago[4].qtd_clientes_pagos, data.pago[5].qtd_clientes_pagos,
+							       data.pago[6].qtd_clientes_pagos, data.pago[7].qtd_clientes_pagos, data.pago[8].qtd_clientes_pagos,
+							       data.pago[9].qtd_clientes_pagos, data.pago[10].qtd_clientes_pagos, data.pago[11].qtd_clientes_pagos,]
+						},]
+					});
+
+					var chart2;
+					chart2 = new Highcharts.Chart({
+						chart: {
+							renderTo: 'relatorio2',
+							type: 'column'
+						},
+						title: {
+							text: 'Total de inscritos/pagos'
+						},
+						xAxis: {
+							categories: ['Total']
+						},
+						yAxis: {
+							title: {
+								text: 'Total de Inscritos/Pagos'
+							}
+						},
+						tooltip: {
+							formatter: function() {
+								return ''+
+									 this.series.name +': '+ this.y +'';
+							}
+						},
+						legend: {
+							layout: 'vertical',
+							align: 'right',
+							verticalAlign: 'top',
+							x: -100,
+							y: 100,
+							floating: true,
+							borderWidth: 1,
+							backgroundColor: '#FFFFFF',
+							shadow: true
+						},
+						plotOptions: {
+								 column: {
+									dataLabels: {
+										enabled: true,
+										style: {
+											fontWeight: 'bold'
+										},
+										formatter: function() {
+											return this.y ;
+										}
+									}
+								}
+							},
+						credits: {
+							enabled: false
+						},
+						series: [{
+							name: 'Inscritos',
+							data: [data.inscritos]
+						}, {
+							name: 'Pagos',
+							data: [data.pagos]
+						}, {
+							name: 'Não pagos',
+							data: [data.nao_pagos]
+						}, {
+							name: 'Apoio',
+							data: [data.apoio]
+						}, {
+							name: 'Convite',
+							data: [data.convite]
+						}, {
+							name: 'Imprensa',
+							data: [data.imprensa]
+						}]
+					});
+
+
+					});
+			   },
+
+		listaClientes: function(){
+				   },
+
+		confirmaPagamento: function(dados){
+		       $.ajax({
+	               url:'/admin/cliente/ajax-confirma-pagamento',
+	               dataType:'html',
+	               data: {id:dados},
+	               type:'POST',
+	               beforeSend: function() {	
+	            	   $('#loading_clientes').css('display','block').html('<p>Aguarde. Confirmando pagamento...</p><img style="margin:0 auto" src="/img/ajax-loader.gif"/>');
+					},
+	               success: function(data,textStatus){
+
+	            	   data = JSON.parse(data); 	
+						
+					   if(data.valor=='1'){
+						//confirmado com sucesso
+						   alert('Confirmado o pagamento de '+data.nome+' com sucesso!');
+						   $('.message').css('display','block').html('<div class="alert_success"><p><img src="/img/icon_accept.png" alt="success" class="mid_align"/>Confirmado pagamento com sucesso!</p></div>');
+						   $('.conf-'+dados).html('<img title="Pagamento confirmado de '+data.nome+' " src="/img/icon/success2.png"/>');
+						   $('tr.id-'+dados).css('background','#97E08B');
+
+						   ajax.relatorioGrafico();
+						}else if(data.valor=='0'){
+						   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexÃ£o com o banco de dados. Tente novamente.</p></div>'); 
+				        }else if(data.valor=='2'){
+						   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Por favor, selecione um cliente vÃ¡lido.</p></div>'); 
+				        }	 
+	               },
+	               error: function(XMLHttpRequest, textStatus, errorThrown){
+	            	   $('.message').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexÃ£o com o banco de dados. Tente novamente.</p></div>'); 
+	            	   alert('loading, ocorreu um erro na conexÃ£o com o banco de dados.');
+					},
+	               complete: function(){
+	            	   		$('#loading_clientes').css('display','none');                 
+		               }
+	       });
+			}
+	}
+
+$(document).ready(function(){
+
+	
+
+	$(".cpf").mask("999.999.999-99");
+
+	//Carrega o relatorio dos SMS
+	ajax.relatorioGrafico();
+	
+	$('.confPgto').click(function(){
+			//var id = $(this).attr('id');
+			ajax.confirmaPagamento($(this).attr('id'));
+
+			//alert(" "+id);
+		});
+});
+</script>
+<style>
+	#clientes tr.convite{background:#85D2FC !important}
+	#clientes tr.apoio{background:#F7C8C8 !important}
+	#clientes tr.imprensa{background:#F9F39D !important}
+</style>
+			<h1>Painel</h1>
+			
+			<!-- Begin shortcut menu -->
+			<ul id="shortcut">
+    			<li>
+    			  <a href="/admin" id="shortcut_home" title="Clique aqui para ir a home">
+				    <img src="../img/shortcut/home.png" alt="home"/><br/>
+				    <strong>Home</strong>
+				  </a>
+				</li>
+    			<li>
+    			  <a href="/admin/relatorio" title="Clique aqui para ver todos os relatórios">
+				    <img src="../img/shortcut/stats.png" alt="stats"/><br/>
+				    <strong>Estatística</strong>
+				  </a>
+				</li>
+			<!-- <li>
+    			  <a href="/admin" title="Clique aqui para ir a home">
+				    <img src="../img/shortcut/setting.png" alt="setting"/><br/>
+				    <strong>Config.</strong>
+				  </a>
+				</li>
+				<li>
+    			  <a href="modal_window.html" id="shortcut_contacts" title="Clique aqui para ver seus clientes">
+				    <img src="../img/shortcut/contacts.png" alt="contacts"/><br/>
+				    <strong>Clientes</strong>
+				  </a>
+				</li>-->
+  			</ul>
+			<!-- End shortcut menu -->
+			<!-- Begin shortcut notification -->
+			<div id="shortcut_notifications">
+				<!-- <span class="notification" rel="shortcut_home">10</span>
+				<span class="notification" rel="shortcut_contacts">5</span> -->
+			</div>
+			<!-- End shortcut noficaton -->			
+			<br class="clear"/>
+		<!-- Begin two column window -->
+			
+			<!-- Begin left column window -->
+			<div class="twocolumn">
+				<div class="column_left">
+					<div class="header">
+						<span>Inscritos/Pagos</span>
+					</div>
+					<br class="clear"/>
+					<div class="content">						
+						<div id="relatorio">
+						</div>
+						<div id="relatorio2">
+						</div>
+						<div id="mapa">
+						</div>
+					</div>
+				</div>
+				<!-- End left column window -->
+				
+				<!-- Begin right column window -->
+				<div class="column_right">
+					<div class="header">
+						<span>Clientes</span>
+					</div>
+					<br class="clear"/>
+					<div class="content">
+						<div id="loading_clientes" style="display:none"></div>
+						<div class="buttons">
+								<ul>	
+									<li>
+										<a id="btn-pdf" class="button" href="#pdf" title="Exportar tabela para PDF"><img src="/img/icon/pdf.gif"/></a>
+									</li>
+									<li>
+										<a id="btn-buscar" class="button" href="#buscar" title="Buscar clientes por nome, e-mail, cpf ou twitter"><img src="/img/magnifier.png"/></a>
+									</li>
+								</ul>
+						</div>
+						<table id="clientes" class="bordered" >
+							<thead>
+								<tr>
+									<th scope="col" class="select"></th>
+									<th scope="col">Nome</th>
+									<th scope="col">CPF</th>
+									<th scope="col">Pago</th>
+									<th scope="col" width="40px">Ações</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<td colspan="5">
+										
+										<!-- 
+										<em>As Agências filiadas ao SINAPRO e 100% em dia nos anos 2009/2010 e 2011 tem 50% de desconto.</em>
+										 -->
+									</td>
+								</tr>
+							</tfoot>
+							<tbody>
+						<?php foreach($this->clientes as $c){
+						
+							if($c->confirma_pagamento<1){
+								if($c->tipo_participacao == 'apoio'){?>
+									<tr title="<?=$c->nome?> é apoio" class="apoio id-<?=$c->id?>">
+								<? }elseif($c->tipo_participacao == 'imprensa'){?>
+									<tr title="<?=$c->nome?> é imprensa" class="imprensa id-<?=$c->id?>">	
+								<? }elseif($c->tipo_participacao == 'convite'){?>
+									<tr title="<?=$c->nome?> é convidado" class="convite id-<?=$c->id?>">
+								<? }elseif($c->tipo_participacao == null){?>
+									<tr class="id-<?=$c->id?>">
+								<? }?>
+							<? }else{ ?>
+								<tr class="conf-green id-<?=$c->id?>"/>
+							<? } ?>
+								<td><input type="checkbox" value="<?=$c->id?>"/></td>
+								<td><a href="/admin/cliente/ver/id/<?=$c->id?>" title="Visualizar os dados de <?=$c->nome?>"><?=$c->nome?></a></td>
+								<td><?=$c->cpf?></td>
+
+							<?	if($c->confirma_pagamento<1){?>
+									<td class="action-none conf-<?=$c->id?>" align="center"><a id="<?=$c->id?>" class="confPgto" title="Confirmar o pagamento de <?=$c->nome?>"><img src="/img/icon/budget.png"/></a></td>	
+							<? }else{ ?>
+									<td class="action-none conf-<?=$c->id?>" align="center"><img title="Pagamento confirmado de <?=$c->nome?>" src="/img/icon/success2.png"/></td>	
+							<? } ?>
+								<td class="action" align="center"><a href="/admin/cliente/editar/id/<?=$c->id?>" title="Editar os dados de <?=$c->nome?>"><img src="/img/icon/edit.png"/></a><a href="/admin/cliente/ver/id/<?=$c->id?>" title="Visualizar os dados de <?=$c->nome?>"><img src="/img/icon/eye.ico"/></a></td>
+							</tr>
+						<?php }?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- End right column window -->
+			</div>
+			<!-- End two column window -->
+			<div style="display:none">
+			<div id="buscar" style="width: 500px; height: 400px; margin: 0 auto">
+				<form action="/admin/cliente/buscar" method="post">
+					<h2>Buscar clientes</h2>
+					<p>
+						<label>Nome: </label>
+						<input type="text" id="nome" name="nome" class="nome"/>
+					</p><br/>
+					<p>
+						<label>E-mail: </label>
+						<input type="text" id="email" name="email" class="email"/>
+					</p><br/>
+					<p>
+						<label>CPF: </label>
+						<input type="text" id="cpf" name="cpf" class="cpf"/>
+					</p><br/>
+					<p>
+						<label>RG: </label>
+						<input type="text" id="rg" name="rg" class="rg"/>
+					</p><br/>
+					<p>
+						<label>Twitter: </label>
+						<input type="text" id="twitter" name="twitter" class="twitter"/>
+					</p><br/>
+					<p>
+						<input type="submit" id="btn_modal" value="Buscar"/>
+					</p>
+					<br/>
+				</form>
+			</div>
+			<?php include('fancybox-pdf.php');?>
+			</div>
+			<div id="debug">
+			</div>
+			
+<?php echo $this->headScript()
+->appendFile($this->baseUrl('/js/script-include.js'))
+->appendFile($this->baseUrl('/js/highchart/highcharts.js'))
+->appendFile($this->baseUrl('/js/json2.js'))
+->appendFile($this->baseUrl('/js/jquery.maskedinput-1.3.min.js')); 
+
+ echo $this->headLink()->appendStylesheet('/js/fancybox/jquery.fancybox-1.3.4.css', 'all');?>
+ <script>
+ 	google.load('visualization', '1', {'packages': ['geochart']});
+	google.setOnLoadCallback(drawMap);
+
+	ajax.totalClientePorEstado();
+	
+	function drawMap() {
+	  var data = new google.visualization.DataTable();
+	  data.addColumn('string', 'City');
+	  data.addColumn('number', 'DeMolay(s)');
+	  data.addColumn('number', 'Maçon(s)');
+	  data.addRows([
+		[arrayMapa[0].estado, parseInt(arrayMapa[0].tipo1), parseInt(arrayMapa[0].tipo2)],[arrayMapa[1].estado, parseInt(arrayMapa[1].tipo1), parseInt(arrayMapa[1].tipo2)],[arrayMapa[2].estado, parseInt(arrayMapa[2].tipo1), parseInt(arrayMapa[2].tipo2)],[arrayMapa[3].estado, parseInt(arrayMapa[3].tipo1), parseInt(arrayMapa[3].tipo2)],
+		/*[arrayMapa[4].estado, parseInt(arrayMapa[4].tipo1), parseInt(arrayMapa[4].tipo2)],[arrayMapa[5].estado, parseInt(arrayMapa[5].tipo1), parseInt(arrayMapa[5].tipo2)],[arrayMapa[6].estado, parseInt(arrayMapa[6].tipo1), parseInt(arrayMapa[6].tipo2)],
+		[arrayMapa[7].estado, parseInt(arrayMapa[7].tipo1), parseInt(arrayMapa[7].tipo2)],[arrayMapa[8].estado, parseInt(arrayMapa[8].tipo1), parseInt(arrayMapa[8].tipo2)],[arrayMapa[9].estado, parseInt(arrayMapa[9].tipo1), parseInt(arrayMapa[9].tipo2)],
+		[arrayMapa[10].estado, parseInt(arrayMapa[10].tipo1), parseInt(arrayMapa[10].tipo2)],[arrayMapa[11].estado, parseInt(arrayMapa[11].tipo1), parseInt(arrayMapa[11].tipo2)],[arrayMapa[12].estado, parseInt(arrayMapa[12].tipo1), parseInt(arrayMapa[12].tipo2)],
+		*/
+	  ]);
+
+	  var options = {
+		region: 'BR',
+		displayMode: 'markers',
+		colorAxis: {colors: ['#EFD82B','#EFAA2B', '#D84308']}
+	  };
+
+	  var chart = new google.visualization.GeoChart(document.getElementById('mapa'));
+	  chart.draw(data, options);
+
+
+	};
+
+	</script>

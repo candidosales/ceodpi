@@ -1,0 +1,349 @@
+<style>
+	#loader{display:none}
+</style>
+	<link type="text/css" rel="stylesheet" href="/css/jquery-ui-1.8.12.custom.css" >
+	<script src="/js/jquery-ui-1.8.12.custom.min.js" type="text/javascript"></script>
+	<script src="/js/jquery.maskedinput-1.3.min.js" ></script>
+	<script src="/js/jquery.validate.1.8.1.min.js" ></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		
+		 function muda(x){			 
+				if(x == '2'){
+					$('li#2').css('display','block');
+					$('li#1').css('display','none');
+				}else if(x == '1'){
+					$('li#2').css('display','none');
+					$('li#1').css('display','block');
+				}
+		 }
+
+		 function bloqueia(){
+			if(<?=100-intval($this->total->inscritos)?> < 1){
+				    $('h1').html('Inscrições encerradas');
+				    $('p.sub-titulo').html('<p>Para maiores informações envie um e-mail para ceodpi@demolaypi.org.br.</p>');	
+					$('form').remove();
+			}		
+		 }
+
+		bloqueia();
+			
+		 var value = $("input[name$='tipo']").val();
+		muda(value);
+
+		$('#filiado').change(function() {
+			$('.tipo_filiado').css('display','none');
+			
+			if($(this).attr('checked')){
+				$('.tipo_filiado').css('display','block');
+			}
+		}); 
+		 
+		$("input[name$='tipo']").change(function() {
+				var val = $(this).val();
+				muda(val);
+			}); 
+				
+		   $("#cep").mask("99.999-999");
+		   $("#cpf").mask("999.999.999-99");   
+		   $("#celular").mask("(99) 9999-9999");
+		   $("#data_nasc").mask("99/99/9999"); 
+
+			$("#formInscricao").validate({
+				rules: {
+					nome: {
+						required: true,
+						minlength: 4
+					},
+					cpf: {
+						required: true,
+						minlength: 11
+					},
+					rg: {
+						required: true,
+						minlength: 4
+					},
+					endereco: {
+						required: true,
+						minlength: 6
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					celular: {
+						required: true,
+						minlength: 11
+					},
+					agree: "required"
+				},
+				messages: {
+					nome: {
+						required: "Por favor, insira seu nome",
+						minlength: "Seu nome deve conter no mínimo 4"
+					},
+					cpf: {
+						required: "Por favor, insira seu cpf",
+						minlength: "Seu cpf deve conter no mínimo 11"
+					},
+					rg: {
+						required: "Por favor, insira seu rg",
+						minlength: "Seu rg deve conter no mínimo 4"
+					},
+					endereco: {
+						required: "Por favor, insira seu endereco",
+						minlength: "Seu endereco deve conter no mínimo 6"
+					},
+					email: "Por favor insira um e-mail válido",
+					celular: {
+						required: "Por favor, insira seu celular",
+						minlength: "Seu celular deve conter no mínimo 11"
+					},
+					agree: "Please accept our policy"
+				}
+			});
+			
+	});
+	</script>
+<section id="content">
+<div id="content-center" class="center">
+<header class="titulo">
+<h1>Inscrição</h1>
+<p class="sub-titulo">Antes de concluir sua inscrição revise seus dados. Inscrições se encerram no dia 20/09</p>
+</header>
+<form id="formInscricao" name="formInscricao" class="wufoo topLabel page" enctype="multipart/form-data" method="post" action="/inscrito" autocomplete="on">
+	<ul>
+
+		<li id="foli0" class=" complex    ">
+			<label class="desc" id="title0"	for="Field0"> Dados pessoais<span id="req_2" class="req">*</span> </label>
+			
+			  <div>
+			  <span	class="full">
+			   <input id="nome" name="nome" type="text" class="field text fn" value="" tabindex="1" />
+			 <label for="Field0">Nome completo</label>
+			  </span>
+				<span class="left">
+				 <input id="rg" name="rg" type="text"	class="field text addr" value="" tabindex="2" />
+				 <label for="rg">RG</label>
+				  </span>
+				  
+				 <span class="right">
+				  <input id="cpf" name="cpf" type="text" class="field text addr"	value="" tabindex="3" />
+				    <label for="cpf">CPF</label>
+				</span>
+				</div>
+		</li>
+
+		<li id="foli2" class="complex"><label class="desc" id="title2" for="Field2"> Endereço <span id="req_2" class="req">*</span> </label>
+			<div>
+				<span class="full addr1">
+				 <input id="endereco" name="endereco"	type="text" class="field text addr" value="" tabindex="4"  />
+
+					<label for="endereco">Rua, Avenida, Logradouro e Bairro</label>
+				 </span>
+				<span class="left" id="pad-bot-11">
+				 <input id="cidade" name="cidade" type="text"	class="field text addr" value="" tabindex="5"  />
+				 <label for="cidade">Cidade</label>
+				  </span>
+				 <span class="right">
+				<!--  <input id="estado" name="estado" type="text" class="field text addr"	value="Piauí" tabindex="6"  />-->
+				  
+				<select name="estado" id="estado" class="field select  addr" tabindex="6">
+					<option value="Acre">Acre</option>
+					<option value="Alagoas">Alagoas</option>
+					<option value="Amapá">Amapá</option>
+					<option value="Amazonas">Amazonas</option>
+					<option value="Bahia">Bahia</option>
+					<option value="Ceará">Ceará</option>
+					<option value="Distrito Federal">Distrito Federal</option>
+					<option value="Espirito Santo">Espirito Santo</option>
+					<option value="Goiás">Goiás</option>
+					<option value="Maranhão">Maranhão</option>
+					<option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+					<option value="Mato Grosso">Mato Grosso</option>
+					<option value="Minas Gerais">Minas Gerais</option>
+					<option value="Pará">Pará</option>
+					<option value="Paraíba">Paraíba</option>
+					<option value="Paraná">Paraná</option>
+					<option value="Pernambuco">Pernambuco</option>
+					<option value="Piauí" selected>Piauí</option>
+					<option value="Rio de Janeiro">Rio de Janeiro</option>
+					<option value="Rio Grande do Norte">Rio Grande do Norte</option>
+					<option value="Rio Grande do Sul">Rio Grande do Sul</option>
+					<option value="Rondônia">Rondônia</option>
+					<option value="Roraima">Roraima</option>
+					<option value="Santa Catarina">Santa Catarina</option>
+					<option value="São Paulo">São Paulo</option>
+					<option value="Sergipe">Sergipe</option>
+					<option value="Tocantins">Tocantins</option>
+				</select>
+				  
+				  
+				    <label for="estado">Estado</label>
+				</span> <span class="left">
+				 <input id="cep" name="cep" type="text" 	class="field text addr" value="Testes teste" maxlength="15" tabindex="7" />
+					
+					 <label for="cep">CEP</label> </span> 
+					
+					<span	class="right"> <input id="pais" name="pais" type="text"		class="field text addr" value="Brasil" tabindex="8" /> 
+					<label		for="pais">País</label> </span>
+			</div>
+		</li>
+		<li id="foli2" class="complex      "><label class="desc" id="title12"
+			for="Field12"> Eu sou: </label>
+			<div>
+				<span>
+				 <input id="tipo-estudante" name="tipo" type="radio"	class="field radio" value="1" tabindex="9"	checked="checked" /> 
+				 <label class="choice" for="estudante">DeMolay</label>
+				</span>
+				 <span>
+				  <input id="tipo-profissional" name="tipo"	type="radio" class="field radio" value="2" tabindex="10" />
+					<label class="choice" for="profissional">Maçom</label>
+				 </span>
+				
+			</div>
+		</li>
+		<li id="2" class="complex"><label class="desc"	id="title2" for="Field2"> Maçom <span id="req_2" class="req">*</span>
+		</label>
+			<div>
+				<span class="full addr1"> <input id="empresa" name="empresa" type="text" class="field text addr" value="" tabindex="11" />
+
+					<label for="Field2">Loja Maçônica</label>
+				 </span>
+				  <!--<span>
+					 <input type="checkbox" tabindex="9" value="1" class="field radio" name="filiado" id="filiado"> 
+					 <label for="filiado" class="choice filiacao">Agência filiada ao SINAPRO-PI</label>
+					</span>
+				 <span class="right tipo_filiado" style='display:none'>
+				    <input id="estado" name="estado" type="text" class="field text addr"	value="Piauí" tabindex="6"  />
+					<select tabindex="6" class="field select  addr" id="tipo_filiado" name="tipo_filiado">
+						<option value="funcionario">Funcionário</option>
+						<option value="diretor">Diretor</option>
+					</select>
+				    <label for="estado">Sua função na empresa filiada</label>
+				</span>-->
+			</div>
+		</li>
+		<li id="1" class="complex    ">
+		<label class="desc"	id="title2" for="Field2"> DeMolay <span id="req_2" class="req">*</span>
+		</label>
+			<div>
+				<span class="full addr1"> <input id="instituicao" name="instituicao"
+					type="text" class="field text addr" value="" tabindex="12" />
+
+					<label for="instituicao">Capítulo</label> </span>
+			</div>
+		</li>
+
+
+		<li id="foli8" class="leftHalf ">
+		<label class="desc" id="title8" for="Field8"> Celular <span id="req_2" class="req">*</span> </label>
+		 <span class="left"> <input	id="celular" name="celular" type="text" class="field text " value="" maxlength="15" tabindex="13"  />
+		  <label for="Field6">(86)	9999-9999</label> </span>
+		</li>
+
+
+
+		<li id="foli9" class="rightHalf ">
+		<label class="desc" id="title9"	for="Field9"> E-mail <span id="req_9" class="req">*</span>
+		  </label>
+			 <span class="left">
+				<input id="email" name="email" type="text"	class="field text medium" value="" maxlength="255" tabindex="14"  />
+			</span>
+
+		</li>
+		<li id="foli12" class=" leftHalf   "><label class="desc" id="title12"	for="Field12"> Data de nascimento </label>
+		 <span class="left"> <input id="data_nasc" name="data_nasc" type="text" class="field text "	value="" maxlength="15" tabindex="15"  /> 
+			<label	for="Field6">dd/mm/aaaa</label> </span>
+		</li>
+
+		<li id="foli13" class="rightHalf ">
+			<label class="desc" id="title9"	for="Field9">
+			 Twitter</label>
+			 <span class="left">
+
+				<input id="twitter" name="twitter" type="text"	class="field text medium" value="" maxlength="255" tabindex="16" />
+			</span>
+		</li>
+
+		<li class="buttons ">
+			<div>
+				<input id="saveForm" name="saveForm" type="submit" value="Concluir inscrição!" />
+			</div>
+		</li>
+
+	</ul>
+</form>
+	<aside class="right">
+		<div class="widget">
+				<table class="preco"  cellpadding="0" cellspacing="0">
+									<tbody>
+									  <tr>
+										<th valign="top" width="137" class="esq"><p align="center"><strong>Descrição</strong></p></th>
+										<th valign="top" width="78"><p align="center"><strong>Valor</strong></p></th>
+									  </tr>
+									   <tr class="back1">
+										<td valign="top" width="137" class="esq"><p>Maçom</p></td>
+										<td valign="top" width="78" class="sem-bordar"><p align="center">R$ 50,00</p></td>
+									  </tr>
+									   <tr class="back1">
+										<td valign="top" width="137" class="esq"><p>DeMolay - Até 15/08</p></td>
+										<td valign="top" width="78" class="sem-bordar"><p align="center">R$ 50,00</p></td>
+									  </tr>
+									   <tr class="back1">
+										<td valign="top" width="137" class="esq"><p>DeMolay - Até 30/08</p></td>
+										<td valign="top" width="78" class="sem-bordar"><p align="center">R$ 60,00</p></td>
+									  </tr>
+									   <tr class="back1">
+										<td valign="top" width="137" class="esq"><p>DeMolay - Até 19/09</p></td>
+										<td valign="top" width="78" class="sem-bordar"><p align="center">R$ 70,00</p></td>
+									  </tr>
+									</tbody>
+							</table>
+			<!--<table class="preco"  cellpadding="0" cellspacing="0">
+									<tbody>
+									  <tr>
+										<th valign="top" width="137" class="esq"><p align="center"><strong>Descrição</strong></p></th>
+										<th valign="top" width="78"><p align="center"><strong>Valor</strong></p></th>
+									  </tr>
+									  <?php 
+									  $i=0;
+									  foreach($this->pagseguroCategorias as $categorias){?>
+									  	 <tr class="back1">
+											<td valign="top" width="137" class="esq"><p><?=$categorias?></p></td>
+											<td valign="top" width="78" class="sem-bordar">
+											<p align="center"><?
+												if($this->pagseguroValores[$i]==0){
+													echo 'Gratuito';
+												}else{
+													echo 'R$ '.str_replace('.',',',(string)$this->pagseguroValores[$i]);
+										  		}?>
+									  		</p>
+									  		</td>
+										  </tr>
+									  <?php 
+									  $i++;
+									  }?>
+								<!--   <tr class="back1">
+										<td valign="top" width="137" class="esq"><p>Diretor de agência filiada ao SINAPRO-PI</p></td>
+										<td valign="top" width="78" class="sem-bordar"><p align="center">Gratuito</p></td>
+									  </tr>
+									  <tr class="back1">
+										<td valign="top" width="137" class="esq"><p>Funcionário de agência filiada ao SINAPRO-PI</p></td>
+										<td valign="top" width="78" class="sem-bordar"><p align="center">R$ 30,00</p></td>
+									  </tr>
+									  <tr class="back1">
+										<td valign="top" width="137" class="esq"><p>Funcionário de agência filiada ao SINAPRO-PI</p></td>
+										<td valign="top" width="78" class="sem-bordar"><p align="center">R$ 30,00</p></td>
+									  </tr>-->
+									</tbody>
+							</table>
+			</div>
+			<?php include('aside.php');?>
+	</aside>
+<div id="debug" style="display:none"></div>
+
+</div>
+</section>
+

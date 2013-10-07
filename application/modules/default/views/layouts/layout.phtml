@@ -1,0 +1,158 @@
+<?php  echo $this->doctype(); ?>
+
+<html>
+    <head>
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+        <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+         <link href='http://fonts.googleapis.com/css?family=Pontano+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet/less" type="text/css" href="/css/style.less" media="all">
+		<script src="/js/less-1.3.0.min.js" type="text/javascript"></script>
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+        <?php flush(); ?>
+	<script src="/js/jquery-1.7.1.min.js" ></script>
+	<script src="/js/jquery.nivo.slider.pack.js" ></script>
+	<script src="/js/jquery.tipsy.js" ></script>
+	<script src="http://sawpf.com/1.0.js"></script>
+	<script type="text/javascript">
+		$(window).load(function() {
+			$('#slider').nivoSlider({
+				controlNav: false,
+				effect:'boxRainGrow', // Specify sets like: 'fold,fade,sliceDown'       
+				boxCols: 8, // For box animations
+				boxRows: 7, // For box animations
+				animSpeed:900, // Slide transition speed
+				pauseTime:3000, // How long each slide will show
+			});
+
+			$('.error_message, .success_message, .info_message, .warning_message').click(function(){
+				$(this).fadeOut('fast');
+			});
+			
+			$('.message').click(function(){
+				$(this).fadeOut('fast');
+			});
+
+			$('a[title!=""]').tipsy({gravity: 's'});
+	
+		});
+    </script>
+        
+	</head>
+	<body>
+		<div id="message"><?php echo $this->messenger(); ?></div>
+		<header id="other_pages" >
+			<!--<div id="canto-superior">
+				<img widht="184" height="184" src="/img/canto_superior.png"></img>
+			</div>-->
+			<section class="center">
+				<a href="/">
+					<img id="logo" width="330" height="120" src="/img/logo_mini.png"/>
+				</a>
+			</section>
+			<nav>
+				<div id="nav-center" class="center">
+					<ul>
+						<li>
+							<a title="" href="/">O Congresso</a>
+						</li>
+						<li>
+							<a title="" href="/inscricao">Inscrição</a>
+						</li>
+						<li>
+							<a title="" href="/programacao">Programação</a>
+						</li>
+						<li>
+							<a title="" href="/teresina">Teresina</a>
+						</li>
+						<li>
+							<a title="" href="/hospedagem">Hospedagem</a>
+						</li>
+						<li>
+							<a title="" href="/noticias">Notícias</a>
+						</li>
+						<li>
+							<a title="" href="/contato">Contato</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<?php echo $this->layout()->content; ?>
+		<footer>
+		<section id="footer-center" class="center">
+			<div class="col_2 left">
+				<h4>Menu</h4>
+					<ul>
+						<li>
+							<a title="" href="/">O Congresso</a>
+						</li>
+							<li>
+								<a title="" href="/inscricao">Inscrição</a>
+							</li>
+							<li>
+								<a title="" href="/programacao">Programação</a>
+							</li>
+							<li>
+								<a title="" href="/teresina">Teresina</a>
+							</li>
+							<li>
+								<a title="" href="/hospedagem">Hospedagem</a>
+							</li>
+							<li>
+								<a title="" href="/noticias">Notícias</a>
+							</li>
+							<li>
+								<a title="" href="/contato">Contato</a>
+							</li>
+					</ul>
+			</div>
+			<div class="col_2 left">
+				<h4>Álbum de fotos</h4>
+					<div class="flickr">
+						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=h&amp;source=user&amp;user=78403060@N05"></script>
+					</div>
+			</div>
+			<div class="col_2_r">
+				<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like-box" data-href="http://www.facebook.com/ceodpi" data-width="292" data-show-faces="true" data-stream="false" data-header="false"></div>
+			</div>
+			<div class="line"></div>
+			<div class="extra">
+					<p class="author">Criação e Desenvolvimento: <a href="http://www.vendepublicidade.com.br" title="Vende Publicidade | Sua agência desde 1991" target="_blank">Vende Publicidade</a></p>
+					
+					<ul id="html5">
+						<li>
+							<a href="http://www.w3.org/html/logo/" title="Conheça com quais tecnologias foi desenvolvido o site" class="tooltip"><img src="/img/html5.png"></a>
+						</li>
+					</ul>
+				</div>
+		</section>
+		
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15472644-22']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</footer>
+	</body>
+</html>
+	

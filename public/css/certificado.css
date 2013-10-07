@@ -1,0 +1,23 @@
+ @CHARSET "UTF-8";
+			@page{size:a4;}
+			
+			body{font-family:Arial;background:url(/img/back/pagina_pdf-18px-A4.jpg) no-repeat;
+			background-image-resolution:300dpi;background-image-resize:6;}
+
+			p{text-align:justify; padding-top:-3px}
+
+			.textright{text-align:right}
+			.textleft{text-align:left;}
+			.textcenter{text-align:center;}
+			.bold{font-weight:bold}
+			.size_20{font-size:20pt;line-height:19pt}
+			.size_18{font-size:18pt;line-height:16pt}
+			.size_16{font-size:16pt;line-height:15pt}
+			.size_14{font-size:14pt;line-height:13pt}
+			.size_11{font-size:11pt;line-height:10pt}
+			.size_10{font-size:10pt;line-height:9pt;}
+			.size_9{font-size:9pt;line-height:8pt;}
+			.size_8{font-size:8pt;line-height:7pt}
+			.size_6{font-size:6pt;line-height:6pt;padding-top:-5pt}			
+			.back_gray{background:#ccc}
+			

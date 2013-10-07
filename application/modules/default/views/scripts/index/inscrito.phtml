@@ -1,0 +1,164 @@
+<section id="content">
+		<div id="content-center" class="center">
+		<div id="col-1" class="left">
+				<header class="titulo">
+					<h1>Suas informações</h1>
+				<? if($this->forma_pagamento!='gratuito'){?>
+					<p class="sub-titulo">Agora é só realizar o pagamento!<br/> Qualquer erro em seus dados envie para <a href="mailto:<?=$this->emailContato?>"><?=$this->emailContato?></a> para correção.</p>
+				<? }else{?>
+					<p class="sub-titulo">Obrigado por se inscrever</p>
+				
+				<? }?>
+				
+				</header>
+			<? if($this->forma_pagamento=='moip'){?>	
+				<form id="formInscrito" class="appnitro"  method="post" action="https://www.moip.com.br/PagamentoMoIP.do">
+			<?php }
+			if($this->forma_pagamento=='pagseguro'){?>
+				<form id="formInscrito" class="appnitro"  method="get" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
+				<input type="hidden" name="code" value="<?=$this->codePagSeguro?>" />
+		
+			<?}	if($this->forma_pagamento=='gratuito'){?>
+				<form id="formInscrito" class="appnitro"  method="get" action="">
+			<? }?>					
+			<ul >
+			<li class="section_break">
+			<h3>Dados Pessoais</h3>
+			<p></p>
+		</li>		<li id="li_1" >
+		<label class="description" for="nome">Nome completo</label>
+		<div>
+			<p><?=$this->cliente->getNome()?></p>
+		 </div> 
+		</li>
+		<li id="li_4" >
+		<label class="description" for="celular">Celular </label>
+		<div>
+			<p><?=$this->cliente->getCelular()?></p>
+		</div> 
+		</li>
+		<li id="li_4" >
+		<label class="description" for="email">E-mail </label>
+		<div>
+			<p><?=$this->cliente->getEmail()?></p>
+		</div> 
+		</li>
+		<li id="li_4" >
+		<label class="description" for="twitter">Twitter </label>
+		<div>
+			<p><?=$this->cliente->getTwitter()?></p> 
+		</div> 
+		</li>
+		
+		<li id="li_2" >
+		<label class="description" for="cpf">CPF</label>
+		<div>
+			<p><?=$this->cliente->getCpf()?></p> 
+		</div> 
+		</li>
+		<li id="li_2" >
+		<label class="description" for="rg">RG</label>
+		<div>
+			<p><?=$this->cliente->getRg()?></p> 
+		</div> 
+		</li>
+		<li class="section_break">
+			<h3>Endereço</h3>
+			<p></p>
+		</li>
+		<li id="li_2" >
+			<label class="description" for="endereco">Endereço</label>
+			<div>
+				<p><?=$this->cliente->getEndereco()?></p> 
+			</div> 
+		</li>
+		<li id="li_2" >
+			<label class="description" for="cidade">Cidade</label>
+			<div>
+				<p><?=$this->cliente->getCidade()?></p> 
+			</div> 
+		</li>
+		<li id="li_2" >
+			<label class="description" for="estado">Estado</label>
+			<div>
+				<p><?=$this->cliente->getEstado()?></p> 
+			</div> 
+		</li>
+		
+		<li class="section_break">
+			<h3>Valor do curso</h3>
+			<p></p>
+		</li>
+		<li id="li_15" >
+		<label class="description" for="valor">R$ <?=$this->valor_apresentacao?> </label>
+		</li>
+		
+		<li class="buttons">
+		<? if($this->forma_pagamento=='moip'){?>
+			    <input type="hidden" name="id_carteira" value="yan.walter@gmail.com" />
+			    <input type="hidden" name="valor" value='<?=$this->valor_inscricao?>' />
+			    <input type="hidden" name="nome" value="X Congresso Estadual da Ordem DeMolay Piaui" />
+			    
+			    <input type="hidden" name="descricao" value="X Congresso Estadual da Ordem DeMolay Piaui: Dias 21 a 23 de Setembro - Teresina" />
+			    <input type="hidden" name="id_transacao" value="<?=$this->idTransacao ?>" />
+			    
+			    <input type="hidden" name="pagador_nome" value="<?=$this->nome?>" />
+			    <input type="hidden" name="pagador_email" value="<?=$this->cliente->getEmail()?>" />
+			    <input type="hidden" name="pagador_cep" value="<?=$this->cep?>" />
+			    <input type="hidden" name="pagador_logradouro" value="<?=$this->endereco?>" />
+			    <input type="hidden" name="pagador_numero" value="1" />
+			    <input type="hidden" name="pagador_cidade" value="<?=$this->cidade?>" />
+			    <input type="hidden" name="pagador_estado" value="PI" />
+			    <input type="hidden" name="pagador_bairro" value=" " />
+			    <input type="hidden" name="pagador_cpf" value="<?=$this->cpf?>" />
+			    <input type="hidden" name="pagador_rg" value="<?=$this->rg?>" />
+			    <input type="hidden" name="pagador_telefone" value="<?=$this->numeroCelular?>" />
+			    
+			<?}?>
+ 			<? if($this->forma_pagamento!='gratuito'){?> 
+			    <input id="saveForm" class="button_text" type="submit" name="submit" value="R$ <?=$this->valor_apresentacao?> Realizar pagamento" />
+			<? }?>
+		</li>
+			</ul>
+		</form>
+		</div>
+			<aside class="right">
+				<? if($this->forma_pagamento=='moip'){?>	
+					<form id="formInscrito" class="appnitro"  method="post" action="https://www.moip.com.br/PagamentoMoIP.do">
+				<?php }
+				if($this->forma_pagamento=='pagseguro'){?>
+					<form id="formInscrito" class="appnitro"  method="get" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
+					<input type="hidden" name="code" value="<?=$this->codePagSeguro?>" />
+				<?}?>					
+					<ul>
+						<li class="buttons">
+						<? if($this->forma_pagamento=='moip'){?>
+							<input type="hidden" name="id_carteira" value="yan.walter@gmail.com" />
+						    <input type="hidden" name="valor" value='<?=$this->valor_inscricao?>' />
+						      <input type="hidden" name="nome" value="X Congresso Estadual da Ordem DeMolay Piaui" />
+			    
+			    <input type="hidden" name="descricao" value="X Congresso Estadual da Ordem DeMolay Piaui: Dias 21 a 23 de Setembro - Teresina" />
+			   <input type="hidden" name="id_transacao" value="<?=$this->idTransacao ?>" />
+						    
+						    <input type="hidden" name="pagador_nome" value="<?=$this->nome?>" />
+						    <input type="hidden" name="pagador_email" value="<?=$this->cliente->getEmail()?>" />
+						    <input type="hidden" name="pagador_cep" value="<?=$this->cep?>" />
+						    <input type="hidden" name="pagador_logradouro" value="<?=$this->endereco?>" />
+						    <input type="hidden" name="pagador_numero" value="1" />
+						    <input type="hidden" name="pagador_cidade" value="<?=$this->cidade?>" />
+						    <input type="hidden" name="pagador_estado" value="PI" />
+						    <input type="hidden" name="pagador_bairro" value=" " />
+						    <input type="hidden" name="pagador_cpf" value="<?=$this->cpf?>" />
+						    <input type="hidden" name="pagador_rg" value="<?=$this->rg?>" />
+						    <input type="hidden" name="pagador_telefone" value="<?=$this->numeroCelular?>" />
+						   <? } ?> 
+						   <? if($this->forma_pagamento!='gratuito'){?> 
+						    <input id="saveForm" class="button_text" type="submit" name="submit" value="R$ <?=$this->valor_apresentacao?> Realizar pagamento" />
+						    <? } ?>
+						</li>
+					</ul>
+				</form>
+				<?php include('aside.php');?>
+			</aside>
+		</div>
+</section>

@@ -1,0 +1,40 @@
+<script>
+$(function(){
+	$('#main-nav li:eq(15) a').addClass('current');
+	$('#main-nav li:eq(15) a ~ ul').css('display','block');
+});
+
+	function confirma(id){
+		if(confirm("Você realmente deseja excluir este usuario?")){
+			location.href='/admin/usuario/deletar/id/'+id;
+		}
+	}
+</script>
+<div class="onecolumn">
+	<div class="header">
+		<span>Ver Usuário</span>
+	</div>
+	<br class="clear"/>
+	<div class="content">
+	<div class="buttons">
+	<ul>	
+			<li>
+				<a class="button" title="Editar usuário" href="/admin/usuario/editar/id/<?=$this->usuario['id'] ?>">
+					<img src="/img/icon/edit.png"/>
+				</a>
+			</li>
+			<li>
+				<a class="button" title="Excluir usuário" onclick="confirma(<?=$this->usuario['id']?>)" href="#">
+					<img src="/img/icon/delete.png"/>
+				</a>
+			</li>
+	</ul>
+</div>
+<p><b>Nome:</b> <?=$this->usuario['nome'] ?><br/>
+<b>E-mail:</b> <?=$this->usuario['email'] ?><br/>
+<b>Telefone:</b> <?=$this->usuario['tel'] ?><br/>
+<b>Login:</b> <?=$this->usuario['login'] ?><br/>
+<b>Senha:</b> <?=$this->usuario['senha'] ?> <br/>
+<b>Função:</b> <?=$this->usuario['regra'] ?> </p>
+</div>
+</div>

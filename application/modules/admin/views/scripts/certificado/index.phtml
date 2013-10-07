@@ -1,0 +1,113 @@
+
+<style>
+#clientes tr.convite{background:#85D2FC !important}
+#clientes tr.apoio{background:#F7C8C8 !important}
+#clientes tr.imprensa{background:#F9F39D !important}
+</style>
+<div class="onecolumn">
+<div class="header">
+<span>Listar Clientes</span>
+</div>
+<br class="clear"/>
+<div class="content">
+<div id="loading_clientes" style="display:none"></div>
+<div class="buttons">
+<ul>
+<li>
+<a id="btn-pdf" class="button" href="#pdf" title="Exportar tabela para PDF"><img src="/img/icon/pdf.gif"/></a></a>
+</li>
+<li>
+<a id="btn-buscar" class="button" href="#buscar" title="Buscar clientes por nome, e-mail, cpf ou twitter"><img src="/img/magnifier.png"/></a></a>
+</li>
+</ul>
+</div>
+<table id="clientes" summary="Employee Pay Sheet" >
+<thead>
+<tr>
+<th scope="col" class="select"></th>
+<th scope="col">Nome</th>
+<th scope="col">CPF</th>
+<th scope="col">RG</th>
+<th scope="col">E-mail</th>
+<th scope="col">Celular</th>
+<th scope="col">Conf. Pag.</th>
+<th scope="col" width="40px">Ações</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="8">
+<!--
+<em>As Agências filiadas ao SINAPRO e 100% em dia nos anos 2009/2010 e 2011 tem 50% de desconto.</em>
+-->
+</td>
+</tr>
+</tfoot>
+<tbody>
+<?php foreach($this->clientes as $c){
+
+if($c->confirma_pagamento<1){
+	if($c->tipo_participacao == 'apoio'){?>
+									<tr title="<?=$c->nome?> é apoio" class="apoio id-<?=$c->id?>">
+								<? }elseif($c->tipo_participacao == 'imprensa'){?>
+									<tr title="<?=$c->nome?> é imprensa" class="imprensa id-<?=$c->id?>">	
+								<? }elseif($c->tipo_participacao == 'convite'){?>
+									<tr title="<?=$c->nome?> é convidado" class="convite id-<?=$c->id?>">
+								<? }elseif($c->tipo_participacao == null){?>
+									<tr class="id-<?=$c->id?>">
+								<? }?>
+							<? }else{ ?>
+								<tr class="conf-green id-<?=$c->id?>"/>
+							<? } ?>
+								<td><input type="checkbox" value="<?=$c->id?>"/></td>
+								<td><a href="/admin/cliente/ver/id/<?=$c->id?>" title="Visualizar os dados de <?=$c->nome?>"><?=$c->nome?></a></td>
+								<td><?=$c->cpf?></td>
+								<td><?=$c->rg?></td>
+								<td><?=$c->email?></td>
+								<td><?=$c->celular?></td>
+							<?	if($c->confirma_pagamento<1){?>
+									<td class="action-none conf-<?=$c->id?>" align="center"><a id="<?=$c->id?>" class="confPgto" title="Confirmar o pagamento de <?=$c->nome?>"><img src="/img/icon/budget.png"/></a></td>	
+							<? }else{ ?>
+									<td class="action-none conf-<?=$c->id?>" align="center"><img title="Pagamento confirmado de <?=$c->nome?>" src="/img/icon/success2.png"/></td>	
+							<? } ?>
+								<td class="action" align="center"><a href="/admin/cliente/editar/id/<?=$c->id?>" title="Editar os dados de <?=$c->nome?>"><img src="/img/icon/edit.png"/></a><a href="/admin/cliente/ver/id/<?=$c->id?>" title="Visualizar os dados de <?=$c->nome?>"><img src="/img/icon/eye.ico"/></a></td>
+							</tr>
+						<?php }?>
+							</tbody>
+						</table>
+	</div>
+				<div style="display:none">
+			<div id="buscar" style="style="width: 500px; height: 400px; margin: 0 auto">
+				<form action="/admin/cliente/buscar" method="post">
+					<h2>Buscar clientes</h2>
+					<p>
+						<label>Nome: </label>
+						<input type="text" id="nome" name="nome" class="nome"/>
+					</p><br/>
+					<p>
+						<label>E-mail: </label>
+						<input type="text" id="email" name="email" class="email"/>
+					</p><br/>
+					<p>
+						<label>CPF: </label>
+						<input type="text" id="cpf" name="cpf" class="cpf"/>
+					</p><br/>
+					<p>
+						<label>RG: </label>
+						<input type="text" id="rg" name="rg" class="rg"/>
+					</p><br/>
+					<p>
+						<label>Twitter: </label>
+						<input type="text" id="twitter" name="twitter" class="twitter"/>
+					</p><br/>
+					<p>
+						<input type="submit" id="btn_modal" value="Buscar"/>
+					</p>
+					<br/>
+				</form>
+			</div>
+			<?php include('/../includes/fancybox-pdf.php');?>
+			</div>
+</div>
+
+<?php echo $this->headScript()->appendFile($this->baseUrl('/js/script-include.js'))?>

@@ -1,0 +1,305 @@
+<script type="text/javascript">
+$(document).ready(function(){
+
+	//Ajax
+	ajax = {
+					
+			   relatorioGrafico:function(){
+					$.get("/admin/cliente/ajax-datas-relatorio?data=30", function(data){
+
+						//alert(data);
+						//$('#debug').css('display','block').html(data);
+					
+						data = JSON.parse(data);
+						Object.size = function(obj) {
+						    var size = 0, key;
+						    for (key in obj) {
+						        if (obj.hasOwnProperty(key)) size++;
+						    }
+						    return size;
+						}
+						
+						var chart;
+						chart = new Highcharts.Chart({
+							chart: {
+								renderTo: 'relatorio',
+								defaultSeriesType: 'line'
+							},
+							title: {
+								text: 'N° de Clientes inscritos/pagos por dia'
+							},
+							subtitle: {
+								text: ''
+							},
+							xAxis: {
+								categories: [data.inscrito[0].data_inscricao, data.inscrito[1].data_inscricao, data.inscrito[2].data_inscricao,
+								             data.inscrito[3].data_inscricao, data.inscrito[4].data_inscricao, data.inscrito[5].data_inscricao,
+								             data.inscrito[6].data_inscricao, data.inscrito[7].data_inscricao, data.inscrito[8].data_inscricao,
+								             data.inscrito[9].data_inscricao, data.inscrito[10].data_inscricao, data.inscrito[11].data_inscricao,
+								             data.inscrito[12].data_inscricao, data.inscrito[13].data_inscricao, data.inscrito[14].data_inscricao,
+								             data.inscrito[15].data_inscricao, data.inscrito[16].data_inscricao, data.inscrito[17].data_inscricao,
+								             data.inscrito[18].data_inscricao, data.inscrito[19].data_inscricao, data.inscrito[20].data_inscricao,
+								             data.inscrito[21].data_inscricao, data.inscrito[22].data_inscricao, data.inscrito[23].data_inscricao,
+								             data.inscrito[24].data_inscricao, data.inscrito[25].data_inscricao, data.inscrito[26].data_inscricao,
+								             data.inscrito[27].data_inscricao, data.inscrito[28].data_inscricao, data.inscrito[29].data_inscricao]
+							},
+							yAxis: {
+								title: {
+									text: 'Quantidade de Inscritos/Pagos'
+								}
+							},
+							tooltip: {
+								enabled: false,
+								formatter: function() {
+									return '<b>'+ this.series.name +'</b><br/>'+
+										this.x +': '+ this.y ;
+								}
+							},
+							plotOptions: {
+								line: {
+									dataLabels: {
+										enabled: true
+									},
+									enableMouseTracking: false
+								}
+							},
+							legend: {
+								layout: 'vertical',
+								align: 'right',
+								verticalAlign: 'top',
+								x: -100,
+								y: 100,
+								floating: true,
+								borderWidth: 1,
+								backgroundColor: '#FFFFFF',
+								shadow: true
+							},
+							series: [{
+								name: 'Inscritos',
+								data: [data.inscrito[0].qtd_clientes_inscritos, data.inscrito[1].qtd_clientes_inscritos, data.inscrito[2].qtd_clientes_inscritos,
+								       data.inscrito[3].qtd_clientes_inscritos, data.inscrito[4].qtd_clientes_inscritos, data.inscrito[5].qtd_clientes_inscritos,
+								       data.inscrito[6].qtd_clientes_inscritos, data.inscrito[7].qtd_clientes_inscritos, data.inscrito[8].qtd_clientes_inscritos,
+								       data.inscrito[9].qtd_clientes_inscritos, data.inscrito[10].qtd_clientes_inscritos, data.inscrito[11].qtd_clientes_inscritos,
+								       data.inscrito[12].qtd_clientes_inscritos, data.inscrito[13].qtd_clientes_inscritos, data.inscrito[14].qtd_clientes_inscritos,
+								       data.inscrito[15].qtd_clientes_inscritos, data.inscrito[16].qtd_clientes_inscritos, data.inscrito[17].qtd_clientes_inscritos,
+								       data.inscrito[18].qtd_clientes_inscritos, data.inscrito[19].qtd_clientes_inscritos, data.inscrito[20].qtd_clientes_inscritos,
+								       data.inscrito[21].qtd_clientes_inscritos, data.inscrito[22].qtd_clientes_inscritos, data.inscrito[23].qtd_clientes_inscritos,
+								       data.inscrito[24].qtd_clientes_inscritos, data.inscrito[25].qtd_clientes_inscritos, data.inscrito[26].qtd_clientes_inscritos,
+								       data.inscrito[27].qtd_clientes_inscritos, data.inscrito[28].qtd_clientes_inscritos, data.inscrito[29].qtd_clientes_inscritos]
+							},{
+								name: 'Pagos',
+								data: [data.pago[0].qtd_clientes_pagos, data.pago[1].qtd_clientes_pagos, data.pago[2].qtd_clientes_pagos,
+								       data.pago[3].qtd_clientes_pagos, data.pago[4].qtd_clientes_pagos, data.pago[5].qtd_clientes_pagos,
+								       data.pago[6].qtd_clientes_pagos, data.pago[7].qtd_clientes_pagos, data.pago[8].qtd_clientes_pagos,
+								       data.pago[9].qtd_clientes_pagos, data.pago[10].qtd_clientes_pagos, data.pago[11].qtd_clientes_pagos,
+								       data.pago[12].qtd_clientes_pagos, data.pago[13].qtd_clientes_pagos, data.pago[14].qtd_clientes_pagos,
+								       data.pago[15].qtd_clientes_pagos, data.pago[16].qtd_clientes_pagos, data.pago[17].qtd_clientes_pagos,
+								       data.pago[18].qtd_clientes_pagos, data.pago[19].qtd_clientes_pagos, data.pago[20].qtd_clientes_pagos,
+								       data.pago[21].qtd_clientes_pagos, data.pago[22].qtd_clientes_pagos, data.pago[23].qtd_clientes_pagos,
+								       data.pago[24].qtd_clientes_pagos, data.pago[25].qtd_clientes_pagos, data.pago[26].qtd_clientes_pagos,
+								       data.pago[27].qtd_clientes_pagos, data.pago[28].qtd_clientes_pagos, data.pago[29].qtd_clientes_pagos]
+							},]
+						});
+
+						var chart2;
+						chart2 = new Highcharts.Chart({
+							chart: {
+								renderTo: 'relatorio2',
+								defaultSeriesType: 'column'
+							},
+							title: {
+								text: 'Total de inscritos/pagos'
+							},
+							xAxis: {
+								categories: ['Total']
+							},
+							yAxis: {
+								title: {
+									text: 'Total de Inscritos/Pagos'
+								}
+							},
+							tooltip: {
+								formatter: function() {
+									return ''+
+										 this.series.name +': '+ this.y +'';
+								}
+							},
+							legend: {
+								layout: 'vertical',
+								align: 'right',
+								verticalAlign: 'top',
+								x: -100,
+								y: 100,
+								floating: true,
+								borderWidth: 1,
+								backgroundColor: '#FFFFFF',
+								shadow: true
+							},
+							plotOptions: {
+									 column: {
+										dataLabels: {
+											enabled: true,
+											style: {
+												fontWeight: 'bold'
+											},
+											formatter: function() {
+												return this.y ;
+											}
+										}
+									}
+								},
+							credits: {
+								enabled: false
+							},
+							series: [{
+								name: 'Inscritos',
+								data: [data.inscritos]
+							}, {
+								name: 'Pagos',
+								data: [data.pagos]
+							}, {
+								name: 'Não pagos',
+								data: [data.nao_pagos]
+							}, {
+								name: 'Apoio',
+								data: [data.apoio]
+							}, {
+								name: 'Convite',
+								data: [data.convite]
+							}, {
+								name: 'Imprensa',
+								data: [data.imprensa]
+							}]
+						});
+
+
+						});
+				   },
+
+			listaClientes: function(){
+					   },
+
+			confirmaPagamento: function(dados){
+			       $.ajax({
+		               url:'/admin/cliente/ajax-confirma-pagamento',
+		               dataType:'html',
+		               data: {id:dados},
+		               type:'POST',
+		               beforeSend: function() {	
+		            	   $('#loading_clientes').css('display','block').html('<p>Aguarde. Confirmando pagamento...</p><img style="margin:0 auto" src="/img/ajax-loader.gif"/>');
+						},
+		               success: function(data,textStatus){
+
+		            	   data = JSON.parse(data); 	
+							
+						   if(data.valor=='1'){
+							//confirmado com sucesso
+							   alert('Confirmado o pagamento de '+data.nome+' com sucesso!');
+							   $('.message').css('display','block').html('<div class="alert_success"><p><img src="/img/icon_accept.png" alt="success" class="mid_align"/>Confirmado pagamento com sucesso!</p></div>');
+							   $('.conf-'+dados).html('<img title="Pagamento confirmado de '+data.nome+' " src="/img/icon/success2.png"/>');
+							   $('tr.id-'+dados).css('background','#97E08B');
+
+							   ajax.relatorioGrafico();
+							}else if(data.valor=='0'){
+							   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados. Tente novamente.</p></div>'); 
+					        }else if(data.valor=='2'){
+							   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Por favor, selecione um cliente válido.</p></div>'); 
+					        }	 
+		               },
+		               error: function(XMLHttpRequest, textStatus, errorThrown){
+		            	   $('.message').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados. Tente novamente.</p></div>'); 
+		            	   alert('loading, ocorreu um erro na conexão com o banco de dados.');
+						},
+		               complete: function(){
+		            	   		$('#loading_clientes').css('display','none');                 
+			               }
+		       });
+				}
+		}
+
+
+
+	 /**/
+
+	//Carrega o relatorio dos SMS
+	ajax.relatorioGrafico();
+
+	$('#clientes tr:even').css('background','#EDEDED');
+	$('#clientes tr:odd').css('background','#CECCCC');
+	$('#clientes tr.conf-green:even').css('background','#C8FFBF');
+	$('#clientes tr.conf-green:odd').css('background','#97E08B');
+
+	$('.confPgto').click(function(){
+			//var id = $(this).attr('id');
+			ajax.confirmaPagamento($(this).attr('id'));
+
+			//alert(" "+id);
+		});
+});
+</script>
+<style>
+	#clientes tr.convite{background:#85D2FC !important}
+	#clientes tr.apoio{background:#F7C8C8 !important}
+	#clientes tr.imprensa{background:#F9F39D !important}
+</style>
+			<h1>Relatórios</h1>
+			
+			<!-- Begin shortcut menu -->
+			<ul id="shortcut">
+    			<li>
+    			  <a href="modal_window.html" id="shortcut_home" title="Clique aqui para ir a Home">
+				    <img src="../img/shortcut/home.png" alt="home"/><br/>
+				    <strong>Home</strong>
+				  </a>
+				</li>
+    			<li>
+    			  <a href="modal_window.html" title="Clique aqui para ver os dados dos SMS's">
+				    <img src="../img/shortcut/stats.png" alt="stats"/><br/>
+				    <strong>Estatística</strong>
+				  </a>
+				</li>
+				<!--<li>
+    			  <a href="modal_window.html" title="Click me to open modal window">
+				    <img src="../img/shortcut/setting.png" alt="setting"/><br/>
+				    <strong>Config.</strong>
+				  </a>
+				</li>
+				<li>
+    			  <a href="modal_window.html" id="shortcut_contacts" title="Clique aqui para ver seus clientes">
+				    <img src="../img/shortcut/contacts.png" alt="contacts"/><br/>
+				    <strong>Clientes</strong>
+				  </a>
+				</li>-->
+  			</ul>
+			<!-- End shortcut menu -->
+			<!-- Begin shortcut notification -->
+			<div id="shortcut_notifications">
+				<!-- <span class="notification" rel="shortcut_home">10</span>
+				<span class="notification" rel="shortcut_contacts">5</span> -->
+			</div>
+			<!-- End shortcut noficaton -->			
+			<br class="clear"/>
+<div class="onecolumn">
+	<div class="header">
+		<span>Listar Clientes</span>
+	</div>
+	<br class="clear"/>
+	<div class="content">
+				<div id="loading_clientes" style="display:none"></div>
+						<div class="buttons">
+								<ul>	
+									<li>
+										<a class="button" href="/admin/cliente/export-pdf" title="Exportar tabela para PDF"><img src="/img/icon/pdf.gif"/></a></a>
+									</li>
+								</ul>
+						</div>
+						<div id="relatorio" style="width: 100%; height: 400px; margin: 0 auto">
+						</div>
+						<div id="relatorio2" style="width: 100%; height: 400px; margin: 0 auto">
+						</div>
+	</div>
+</div>
+	<div id="debug">
+	</div>
+<?php echo $this->headScript()->appendFile($this->baseUrl('/js/highchart/highcharts.js'))
+->appendFile($this->baseUrl('/js/json2.js')); ?>

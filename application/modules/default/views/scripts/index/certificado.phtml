@@ -1,0 +1,24 @@
+<section id="content">
+		<div id="content-center" class="center">
+			<div id="col-1" class="left">
+				<header class="titulo">
+					<h1>Certificados</h1>
+				</header>
+				<article>
+					<p>Clique em cima do seu nome e faça o download do seu certificado digital.</p>
+				</article>
+				<ul id="certificado">
+				<?php  foreach ($this->clientes as $c){?>
+				<li>
+					<a title="Certificado do <?=$c->nome;?>" href="/admin/certificado/export/id/<?=$c->id?>/module_/default">
+						<p><?=$c->nome;?></p>
+					</a>
+				</li>
+				<?php  }?>
+				</ul>
+			</div>
+			<aside class="right">
+				<?php include('aside.php');?>
+			</aside>
+		</div>
+	</section>

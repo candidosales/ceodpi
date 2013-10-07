@@ -1,0 +1,26 @@
+<?php
+class CSG_Filter_Transliterate implements Zend_Filter_Interface 
+{
+  public function filter($string)
+  {
+     // Lista de caracteres que devem ser substituídos
+     $a = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ$ßàáâãäåæ@çèéêë&amp;'
+        . 'ìíîïðñòóôõöøùúûüýýþÿRr°ºª,.;:\|/"^~*%# ()[]{}=!?`‘’' 
+        . "'";
+ 
+     // Lista que irá substituir os caracteres acima
+     $b = 'aaaaaaaceeeeiiiidnoooooouuuuybssaaaaaaaaceeeee'
+        . 'iiiidnoooooouuuuyybyRrooa--------------------------' 
+        . '-';
+ 
+     // Efetua a substituição
+     $string = strtr($string, $a, $b); 
+ 
+     // Deixa tudo minúsculo
+     $string = strtolower($string);
+ 
+     // Evita hífens repetidos
+     $string = preg_replace('/--+/', '-', $string); 
+     return $string;
+  }
+}

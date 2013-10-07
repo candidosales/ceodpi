@@ -1,0 +1,17 @@
+<script type="text/javascript">
+$(function(){
+	$('#main-nav li:eq(15) a').addClass('current');
+	$('#main-nav li:eq(15) a ~ ul').css('display','block');
+});
+</script>
+<div class="onecolumn">
+				<div class="header">
+					<span>Listagem de Usuários</span>
+				</div>
+				<br class="clear"/>
+				<div class="content">
+	<?=$this->grid?>
+	<a class="button button_1" href="/admin/usuario/adicionar"><span class="add">Novo usuário</span></a>
+	
+	</div>
+			</div>
