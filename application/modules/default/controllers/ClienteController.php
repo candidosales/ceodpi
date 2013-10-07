@@ -39,9 +39,12 @@ class Default_ClienteController extends Zend_Controller_Action
 				}elseif($data['tipo'] == 'profissional'){
 					$data['instituicao'] = null;
 				}
+
+				$grupo = new Grupo();
+				$grupo = $grupo->$getId(1);
 				
-			    $data['grupo_id'] = 0;
-				$data['grupo_nome'] = '';
+			    $data['grupo_id'] = $grupo->id;
+				$data['grupo_nome'] = $grupo->nome;
 				
 				$data['twitter'] = str_replace('@','',$data['twitter']);
 

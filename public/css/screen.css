@@ -1430,3 +1430,10 @@ ul.filetree span.file { background: url(../img/icon_users.png) no-repeat scroll 
 
 .ver-maior{font-size:16px;font-weight:bold;padding-bottom:2px;border-bottom:1px solid #ccc}
 .ver-menor{padding:0px 0px 0px 20px}
+
+	#clientes tr.convite{background:#85D2FC !important}
+	#clientes tr.apoio{background:#F7C8C8 !important}
+	#clientes tr.imprensa{background:#F9F39D !important}
+
+#finalizar-label{display:none}
+#outro-element,#finalizar-element{width:20%}

@@ -1,60 +1,3 @@
-<script type="text/javascript">
-$(document).ready(function(){
-
-
-	ajax = {
-			
-	confirmaPagamento: function(dados){
-	       $.ajax({
-               url:'/admin/cliente/ajax-confirma-pagamento',
-               dataType:'html',
-               data: {id:dados},
-               type:'POST',
-               beforeSend: function() {	
-            	   $('#loading_clientes').css('display','block').html('<p>Aguarde. Confirmando pagamento...</p><img style="margin:0 auto" src="/img/ajax-loader.gif"/>');
-				},
-               success: function(data,textStatus){
-
-            	   data = JSON.parse(data); 	
-					
-				   if(data.valor=='1'){
-					//confirmado com sucesso
-					   alert('Confirmado o pagamento de '+data.nome+' com sucesso!');
-					   $('.message').css('display','block').html('<div class="alert_success"><p><img src="/img/icon_accept.png" alt="success" class="mid_align"/>Confirmado pagamento com sucesso!</p></div>');
-					   $('.conf-'+dados).html('<img title="Pagamento confirmado de '+data.nome+' " src="/img/icon/success2.png"/>');
-					   $('tr.id-'+dados).css('background','#97E08B');
-
-					   ajax.relatorioGrafico();
-					}else if(data.valor=='0'){
-					   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados. Tente novamente.</p></div>'); 
-			        }else if(data.valor=='2'){
-					   $('.message').css('display','block').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Por favor, selecione um cliente válido.</p></div>'); 
-			        }	 
-               },
-               error: function(XMLHttpRequest, textStatus, errorThrown){
-            	   $('.message').html('<div class="alert_error"><p><img src="/img/icon_error.png" alt="delete" class="mid_align"/>Lamento, ocorreu um erro na conexão com o banco de dados. Tente novamente.</p></div>'); 
-            	   alert('loading, ocorreu um erro na conexão com o banco de dados.');
-				},
-               complete: function(){
-            	   		$('#loading_clientes').css('display','none');                 
-	               }
-       });
-		}
-	}
-
-	$('.confPgto').click(function(){
-			//var id = $(this).attr('id');
-			ajax.confirmaPagamento($(this).attr('id'));
-
-			//alert(" "+id);
-		});
-});
-</script>
-<style>
-	#clientes tr.convite{background:#85D2FC !important}
-	#clientes tr.apoio{background:#F7C8C8 !important}
-	#clientes tr.imprensa{background:#F9F39D !important}
-</style>
 <div class="onecolumn">
 	<div class="header">
 		<span>Listar Clientes</span>
@@ -160,6 +103,3 @@ $(document).ready(function(){
 			<?php include('fancybox-pdf.php');?>
 			</div>
 </div>
-
-<?php echo $this->headScript()
-->appendFile($this->baseUrl('/js/script-include.js')) ?>

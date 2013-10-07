@@ -204,6 +204,8 @@ class Admin_ClienteController extends Zend_Controller_Action
 				$grupo = $grupo->getAsArray($data['grupo_id']);
 				$data['grupo_nome'] = $grupo['nome'];
 				
+				$data['filiado'] = '';
+				$data['hospedagem'] = '';
 				$data['endereco'] = '';
 				$data['cidade']   = '';
 				$data['cpf']   = '';
