@@ -23,7 +23,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 						 ->appendHttpEquiv('pragma', 'no-cache')
 						 ->appendHttpEquiv('Cache-Control', 'public')
 
-						 ->appendName('keywords', 'x congresso da ordem demolay, piaui, teresina, brasil, demolay')
+						 ->appendName('keywords', 'xi congresso da ordem demolay, piaui, teresina, brasil, demolay')
 						 ->appendName('viewport', 'initial-scale=1.0, user-scalable=yes')
 						 
 						 ->appendName('description', $config->evento->description)

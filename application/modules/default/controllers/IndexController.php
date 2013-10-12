@@ -202,8 +202,8 @@ class Default_IndexController extends Zend_Controller_Action
     public function palestrantesAction(){$this->view->headTitle()->prepend('Palestrantes');   }
 	
 	public function programacaoAction(){$this->view->headTitle()->prepend('Programação'); }
-	
-	public function teresinaAction(){$this->view->headTitle()->prepend('Teresina');}
+
+	public function sedeAction(){$this->view->headTitle()->prepend('Sede');}
 	
 	public function hospedagemAction(){$this->view->headTitle()->prepend('Hospedagem'); }
 	
@@ -470,10 +470,10 @@ class Default_IndexController extends Zend_Controller_Action
 		}
 	
 	if($this->evento->getFormaPagamento()=='moip'){
-		
+			/* Se Maçom fosse diferenciado
 			if($data['tipo']=='2'){
 				return '5000';
-			}
+			}*/
 		
 		
 	      //MoIP

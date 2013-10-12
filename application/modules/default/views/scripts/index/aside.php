@@ -1,44 +1,13 @@
 
 					<div class="widget w_twitter">
-						<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'search',
-  search: 'ceodpi',
-  interval: 30000,
-  title: 'O que estão dizendo sobre o',
-  subject: 'X CEODP-PI',
-  width: 'auto',
-  rpp: 3,
-  height: 300,
-  theme: {
-    shell: {
-      background: '#ffffff',
-      color: '#252424'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#252424'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: true,
-    live: false,
-    hashtags: true,
-    timestamp: true,
-    avatars: true,
-    toptweets: true,
-    behavior: 'default'
-  }
-}).render().start();
-</script>
+<a class="twitter-timeline" width="300" height="250" href="https://twitter.com/ceodpi" data-widget-id="389090942923198464">Tweets de @ceodpi</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 					</div>
+					<!--
 					<div class="widget">
 						<h5>Patrocínio Ouro</h5>
+						
 						<ul>
 							<li class="center-1" >
 								<a title="FACID" href="http://www.facid.com.br" target="_blank">
@@ -66,9 +35,13 @@ new TWTR.Widget({
 								</a>
 							</li>
 						</ul>
+					
 					</div>
+					-->
+					<!--
 					<div class="widget">
 						<h5>Patrocínio Prata</h5>
+						
 						<ul>
 							<li>
 								<a rel="nofollow" title="Vende Publicidade" href="http://www.vendepublicidade.com.br" target="_blank">
@@ -85,11 +58,14 @@ new TWTR.Widget({
 									<img src="/img/staff/sol-nascente.png" width="140" height="80" />
 								</a>
 							</li>
-						
 						</ul>
+					
 					</div>
+					-->
+					<!--
 					<div class="widget">
 						<h5>Patrocínio Bronze</h5>
+						
 						<ul>
 							<li class="menor">
 								<a rel="nofollow" title="Stanza" href="" target="_blank">
@@ -117,7 +93,9 @@ new TWTR.Widget({
 								</a>
 							</li>
 						</ul>
+					
 					</div>
+					-->
 					<div class="widget">
 						<h5>Apoio</h5>
 						<ul>

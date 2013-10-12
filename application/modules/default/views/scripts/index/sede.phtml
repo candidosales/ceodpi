@@ -1,0 +1,70 @@
+<section id="content">
+		<div id="content-center" class="center">
+			<div id="col-1" class="left">
+				<header class="titulo">
+					<h1>Picos</h1>
+				</header>
+				<article class="teresina">
+					<p>Picos,  conhecida como Cidade Modelo e Capital do Mel. Cidade jovem, tem como principal característica social a mistura étnica pois sua população é formada por indivíduos das mais diversas partes do país. Geograficamente é cortada pelo rio Guaribas, que apesar de ser um rio temporário, alivia o famoso calor das tardes picoenses.</p>
+					<p>Situa-se na região centro-sul do Piauí. É a cidade mais desenvolvida economicamente dessa região. Essa característica aliada ao seu posicionamento geográfico lhe conferem a condição de polo comercial efervescente no Piauí (especialmente de combustíveis e mel). É cortada pela BR-316 (ou Rodovia Transamazônica), BR-407, BR-230 e fica muito próxima a BR-020. É uma das maiores produtoras de mel do país e destaca-se também por sediar uma unidade do Exército Brasileiro (3º BEC - Batalhão de Engenharia e Construção).</p>
+					<p>Em dezembro de 2013, a cidade modelo vai ser sede do XI Congresso da Ordem DeMolay e contará com grandes nomes da liderança juvenil nacional.</p>
+					<p>Veja abaixo algumas fotos de Picos:</p>
+				</article>
+				<div class="flickr teresina">
+					<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=7&amp;display=random&amp;size=s&amp;layout=h&amp;source=all_tag&tag=picos piaui igreja"></script>
+				</div>
+				<!--
+				<article>
+				<p>Acesse os sites e conheça as notícias sobre a nossa Prefeitura Municipal de Teresina, do Governo do Estado do Piauí e da Assembléia Legislativa.</p>
+				<ul class="teresina_orgaos">
+						<li>
+							<a title="Prefeitura Municipal de Teresina" href="http://www.teresina-pi-gov.com.br/" target="_blank">
+								<img width="150" height="79" src="/img/noticias/prefeitura.png"></img>
+							</a>
+						</li>
+						<li>
+							<a title="Governo do Estado do Piauí" href="http://www.piaui.pi.gov.br/" target="_blank">
+								<img width="150" height="79" src="/img/noticias/governo.png"></img>
+							</a>
+						</li>
+						<li>
+							<a title="Assembléia Legislativa do Piauí" href="http://www.alepi.pi.gov.br/" target="_blank">
+								<img width="150" height="79" src="/img/noticias/alepi.jpg"></img>
+							</a>
+						</li>
+				</ul>
+				</article>-->
+				<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+			    <script>
+					var map;
+					function initialize() {
+					  var mapOptions = {
+					    zoom: 14,
+					    center: new google.maps.LatLng(-7.086991, -41.469926),
+					    mapTypeId: google.maps.MapTypeId.ROADMAP
+					  };
+					  map = new google.maps.Map(document.getElementById('map-canvas'),
+					      mapOptions);
+
+					  var marker = new google.maps.Marker({
+					    map: map,
+					    position: map.getCenter()
+					  });
+					  var infowindow = new google.maps.InfoWindow();
+					  infowindow.setContent('<b>Picos</b>');
+
+					  google.maps.event.addListener(marker, 'click', function() {
+					      infowindow.open(map, marker);
+					  });
+					}
+
+					google.maps.event.addDomListener(window, 'load', initialize);
+
+			    </script>
+			    <div id="map-canvas"></div>
+			</div>
+			<aside class="right">
+				<?php include('aside.php');?>
+			</aside>
+		</div>
+</section>
