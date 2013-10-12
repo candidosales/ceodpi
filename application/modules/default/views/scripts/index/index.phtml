@@ -6,6 +6,7 @@
         <?php echo $this->headTitle(); ?>
         <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
         <link href='http://fonts.googleapis.com/css?family=Questrial|Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="/js/nivo-slider-3.2/nivo-slider.css">
 		<link rel="stylesheet/less" type="text/css" href="/css/style.less">
 		<script src="/js/less-1.4.1.min.js" type="text/javascript"></script>	
 		<!--[if lt IE 9]>
@@ -23,7 +24,9 @@
 					<div class="slider-wrapper theme-default">
 						<div class="ribbon"></div>
 						<div id="slider" class="nivoSlider">
-						<img src="/img/1_.jpg" alt="" />
+						<img src="/img/back-1.jpg" alt="" />
+						<img src="/img/back-2.jpg" alt="" />
+						<img src="/img/back-3.jpg" alt="" />
 					</div>
 				</div>
 				</div>
@@ -159,18 +162,18 @@
 					</div>
 			<div class="line"></div>
 			<div class="extra">
-					<p class="author">Criação e Desenvolvimento: <a href="http://www.vendepublicidade.com.br" title="Vende Publicidade | Sua agência desde 1991" target="_blank">Vende Publicidade</a></p>
+					<p class="author">Criação e Desenvolvimento: <a href="http://www.about.me/candidosales" title="Cândido Sales" target="_blank">Cândido Sales</a></p>
 				</div>
 		</section>
 	</footer>
 	<script src="/js/jquery-1.10.2.min.js" ></script>
-	<script src="/js/jquery.nivo.slider.pack.js" ></script>
+	<script src="/js/nivo-slider-3.2/jquery.nivo.slider.pack.js" ></script>
 	<script src="/js/jquery.tipsy.js" ></script>
 	<script type="text/javascript">
-		$(window).load(function() {
+
 			$('#slider').nivoSlider({
 				controlNav: false,
-				effect:'boxRainGrow', // Specify sets like: 'fold,fade,sliceDown'       
+				effect:'boxRain', // Specify sets like: 'fold,fade,sliceDown'       
 				boxCols: 8, // For box animations
 				boxRows: 7, // For box animations
 				animSpeed:900, // Slide transition speed
@@ -178,7 +181,7 @@
 			});
 
 			$('a[title!=""]').tipsy({gravity: 'sw'});
-		});
+
     </script>
     
     <script type="text/javascript">
