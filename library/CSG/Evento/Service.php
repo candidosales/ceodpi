@@ -47,7 +47,7 @@ class CSG_Evento_Service{
     			$html.='
 					<p style="font-weight:bold;color:'.$evento->getEmailMktCor().';font-size:18px;font-family:Arial">Sr(a). '.$data['nome'].',</p>
 					<p style="font-size:14px;font-family:Arial;line-height:18px">
-						<strong>Parabéns</strong>, por se inscrever no nosso X Congresso Estadual da Ordem DeMolay Piauiense.
+						<strong>Parabéns</strong>, por se inscrever em nosso Congresso Estadual da Ordem DeMolay Piauiense.
 					</p>
 					<p style="font-size:14px;font-family:Arial;line-height:18px">
 						Efetue logo seu pagamento e garanta a sua vaga.
@@ -131,22 +131,22 @@ class CSG_Evento_Service{
     	$html.='<ul style="list-style:none;float:left;padding:0;margin:0;width:100%;overflow:hidden;">
 						<li style="float:left;margin:0;padding:0 15px 0 0">
 							<a title="Siga nosso twitter" target="_blank" href="'.$evento->getUrlTwitter().'">
-								<img width="32" height="32" style="float:left;" src="http://www.marketingpoliticopiaui.com/img/email/twitter.png"></img>
+								<img width="32" height="32" style="float:left;" src="'.$evento->getUrlSite().'/img/email/twitter.png"></img>
 							</a>
 						</li>
 						<li style="float:left;margin:0;padding:0 15px 0 0">
 							<a title="Acompanhe nosso facebook!" target="_blank"  href="'.$evento->getUrlFacebook().'">
-								<img width="32" height="32" style="float:left" src="http://www.marketingpoliticopiaui.com/img/email/facebook.png"></img>
+								<img width="32" height="32" style="float:left" src="'.$evento->getUrlSite().'/img/email/facebook.png"></img>
 							</a>
 						</li>
 						<li style="float:left;margin:0;padding:0 15px 0 0">
-							<a title="Adicione este site nos seus favoritos" target="_blank" href="http://del.icio.us/post?url='.$evento->getSite().'">
-								<img width="32" height="32" style="float:left" src="http://www.marketingpoliticopiaui.com/img/email/delicious.png"></img>
+							<a title="Acompanhe nosso instagram!" target="_blank"  href="'.$evento->getUrlInstagram().'">
+								<img width="32" height="32" style="float:left" src="'.$evento->getUrlSite().'/img/email/instagram.png"></img>
 							</a>
 						</li>
 						<li style="float:left;margin:0;">
 							<a title="Envie-nos um e-mail" href="mailto:'.$evento->getContatoEmail().'">
-								<img width="32" height="32" style="float:left;padding:0 0 10px 0" src="http://www.marketingpoliticopiaui.com/img/email/email.png"></img>
+								<img width="32" height="32" style="float:left;padding:0 0 10px 0" src="'.$evento->getUrlSite().'/img/email/email.png"></img>
 								<span style="font-size:14px;float:left;margin:4px 0 0 4px;color:#1265a9;font-weight:bold">'.$evento->getContatoEmail().'</span>
 							</a>
 						</li>
@@ -175,8 +175,8 @@ class CSG_Evento_Service{
     
    static function enviarSms($data){
     
-    	$mensagem = 'Obrigado por se inscrever! Estamos aguardando o pagamento de sua inscricao.';
-		$assinatura = 'X CEOD-PI';
+    	$mensagem = 'Obrigado por se inscrever! Estamos aguardando o pagamento e acompanhe novidades facebook.com/ceodpi.';
+		$assinatura = 'XICEODPI';
 							
 		$nome = explode(' ',$data['cliente']->getNome());
 		$mensagem = 'Sr(a) '.$nome[0].', '.$mensagem;

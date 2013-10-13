@@ -116,6 +116,10 @@ class CSG_Evento_Object
 	public function getUrlFlickr(){
 		return $this->_evento->url->flickr;
 	}
+
+	public function getUrlSite(){
+		return $this->_evento->url->site;
+	}
 	
 	public function getSite(){
 		return $this->_evento->site;
