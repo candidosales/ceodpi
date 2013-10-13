@@ -1,19 +1,6 @@
-var arrayMapa = null;
-
 //Ajax
 ajax = {
-
-			totalClientePorEstado:function(){
-				$.get("/admin/cliente/ajax-total-cliente-categoria-estado", function(data){
-
-					//alert(data);
-					//$('#debug').css('display','block').html(data);
-					data = JSON.parse(data);
-					
-					arrayMapa = data;
-				});
-		   },
-				
+			
 		   relatorioGrafico:function(){
 				$.get("/admin/cliente/ajax-datas-relatorio?data=12", function(data){
 

@@ -1,5 +1,11 @@
 <section id="content">
 <div id="content-center" class="center">
+	<?php if(100-intval($this->total->inscritos) < 1){?>
+					<header class="titulo">
+					<h1>Inscrições encerradas</h1>
+					<p class="sub-titulo">Para maiores informações envie um e-mail para ceodpi@vendepublicidade.org.br</p>
+					</header>
+	<?php }else{ ?>
 <header class="titulo">
 <h1>Inscrição</h1>
 <p class="sub-titulo">Antes de concluir sua inscrição revise seus dados. Inscrições se encerram no dia 25/11</p>
@@ -42,33 +48,33 @@
 				<!--  <input id="estado" name="estado" type="text" class="field text addr"	value="Piauí" tabindex="6"  />-->
 				  
 				<select name="estado" id="estado" class="field select  addr" tabindex="6">
-					<option value="Acre">Acre</option>
-					<option value="Alagoas">Alagoas</option>
-					<option value="Amapá">Amapá</option>
-					<option value="Amazonas">Amazonas</option>
-					<option value="Bahia">Bahia</option>
-					<option value="Ceará">Ceará</option>
-					<option value="Distrito Federal">Distrito Federal</option>
-					<option value="Espirito Santo">Espirito Santo</option>
-					<option value="Goiás">Goiás</option>
-					<option value="Maranhão">Maranhão</option>
-					<option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-					<option value="Mato Grosso">Mato Grosso</option>
-					<option value="Minas Gerais">Minas Gerais</option>
-					<option value="Pará">Pará</option>
-					<option value="Paraíba">Paraíba</option>
-					<option value="Paraná">Paraná</option>
-					<option value="Pernambuco">Pernambuco</option>
-					<option value="Piauí" selected>Piauí</option>
-					<option value="Rio de Janeiro">Rio de Janeiro</option>
-					<option value="Rio Grande do Norte">Rio Grande do Norte</option>
-					<option value="Rio Grande do Sul">Rio Grande do Sul</option>
-					<option value="Rondônia">Rondônia</option>
-					<option value="Roraima">Roraima</option>
-					<option value="Santa Catarina">Santa Catarina</option>
-					<option value="São Paulo">São Paulo</option>
-					<option value="Sergipe">Sergipe</option>
-					<option value="Tocantins">Tocantins</option>
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espirito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI" selected>Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP">São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>
 				</select>
 				  
 				  
@@ -167,6 +173,7 @@
 
 	</ul>
 </form>
+<?php } ?>
 	<aside class="right">
 		<div class="widget">
 				<table class="preco"  cellpadding="0" cellspacing="0">
@@ -233,8 +240,5 @@
 			</div>
 			<?php include('aside.php');?>
 	</aside>
-<div id="debug" style="display:none"></div>
-
-</div>
 </section>
 

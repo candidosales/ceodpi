@@ -122,8 +122,6 @@
 
 </script>
 	<script src="/js/jquery-1.10.2.min.js" ></script>
-	<script src="/js/jquery.tipsy.js" ></script>
-	<script src="http://sawpf.com/1.0.js"></script>
 	<script src="/js/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min.js" ></script>
 	<script src="/js/jquery.maskedinput.1.3.1.min.js" ></script>
 	<script src="/js/jquery.validate.1.8.1.min.js" ></script>
@@ -136,9 +134,7 @@
 				$(this).fadeOut('fast');
 			});
 
-			$('a[title!=""]').tipsy({gravity: 's'});
-
-					 function muda(x){			 
+		 function muda(x){			 
 				if(x == '2'){
 					$('li#2').css('display','block');
 					$('li#1').css('display','none');
@@ -147,18 +143,8 @@
 					$('li#1').css('display','block');
 				}
 		 }
-
-		 function bloqueia(){
-			if(<?php echo 100-intval($this->total->inscritos)?> < 1){
-				    $('h1').html('Inscrições encerradas');
-				    $('p.sub-titulo').html('<p>Para maiores informações envie um e-mail para ceodpi@demolaypi.org.br.</p>');	
-					$('form').remove();
-			}		
-		 }
-
-		bloqueia();
 			
-		 var value = $("input[name$='tipo']").val();
+		var value = $("input[name$='tipo']").val();
 		muda(value);
 
 		$('#filiado').change(function() {
@@ -246,6 +232,59 @@
 						minlength: "Seu cpf deve conter no mínimo 11"
 					},
 				}
+			});
+
+
+	ajaxSegundaVia = {
+
+			buscarCliente:function(dados){
+				   
+			       $.ajax({
+		               url:'/index/ajax-buscar-cliente',
+		               dataType:'json',
+		               data: dados,
+		               type:'POST',
+		               success: function(data,textStatus){	
+							console.log(data);
+			               		               
+		            	   if(data.valor=='1'){
+		            		   console.log('Sucesso');
+		            		   $('#formBuscaCPF').hide();
+		            		   $('#formSegundaVia').show();
+
+		            		   $('input[name="id_carteira"]').val(data.id_carteira);
+		            		   $('input[name="nome"]').val(data.nome);
+		            		   $('input[name="descricao"]').val(data.descricao);
+		            		   $('input[name="id_transacao"]').val(data.id_transacao);
+		            		   $('input[name="pagador_nome"]').val(data.pagador_nome);
+		            		   $('input[name="pagador_email"]').val(data.pagador_email);
+		            		   $('input[name="pagador_cep"]').val(data.pagador_cep);
+		            		   $('input[name="pagador_logradouro"]').val(data.pagador_logradouro);
+		            		   $('input[name="pagador_numero"]').val(data.pagador_numero);
+		            		   $('input[name="pagador_cidade"]').val(data.pagador_cidade);
+		            		   $('input[name="pagador_estado"]').val(data.pagador_estado);
+		            		   $('input[name="pagador_bairro"]').val(data.pagador_bairro);
+		            		   $('input[name="pagador_cpf"]').val(data.pagador_cpf);
+		            		   $('input[name="pagador_rg"]').val(data.pagador_rg);
+		            		   $('input[name="pagador_telefone"]').val(data.pagador_telefone);
+		            		   $('input[name="valor"]').val(data.valor_transacao);
+
+		            		   $('#segundaVia').val(data.pagador_nome+' - Gerar 2° via - '+data.valor_transacao);
+
+				           }else if(data.valor=='0'){
+				           		console.log('Nao encontrou o cliente');
+						   } 		 
+		               },
+		               error: function(XMLHttpRequest, textStatus, errorThrown){
+		            	   console.log(textStatus+' '+errorThrown);
+						}
+		       });
+			},
+		}
+
+			$("#formBuscaCPF").submit(function() {
+			  ajaxSegundaVia.buscarCliente($("#formBuscaCPF").serialize());
+			  event.preventDefault();
 			});
     </script>
 	</footer>

@@ -145,5 +145,5 @@ $("#form_adicionar_cliente").validate({
 	$('#main-nav li:eq(12) a ~ ul').css('display','block');
 
 	//limite de caracteres
-	$('#from').limit('18','#char');
-	$('#mensagem').limit('103','#char2');
+	//$('#from').limit('18','#char');
+	//$('#mensagem').limit('103','#char2');

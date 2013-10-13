@@ -32,7 +32,7 @@ class Default_IndexController extends Zend_Controller_Action
 			$jaCadastrado = $this->verificaInscricao($data);
 
 			if($jaCadastrado){
-				$this->_helper->messenger('warning','<img class="mid_align" alt="warning" src="/img/icon_warning.png"> Você já está inscrito neste evento. Envie e-mail para <a href="mailto:'.$this->evento->getContatoEmail().'">'.$this->evento->getContatoEmail().'</a> para qualquer dúvida ou para gerar 2° via do boleto.');	
+				$this->_helper->messenger('warning','<img class="mid_align" alt="warning" src="/img/icon_warning.png"> Você já está inscrito neste evento. Clique <a href="/segunda-via">aqui para gerar a 2° via</a>.');	
 				$this->_redirect('/inscricao');
 			}else{
 				$erros = CSG_Evento_Validate::validarFormulario($data);
@@ -63,7 +63,8 @@ class Default_IndexController extends Zend_Controller_Action
 							//CSG_Evento_Service::enviarEmail($data);
 						}
 						//Zend_Debug::dump($data);die;
-						$valor_inscricao = $this->calcularValorInscricao($data);
+						$valor = new CSG_Evento_Registry();
+						$valor_inscricao = $valor->calcularValorInscricao($data);
 						$this->view->forma_pagamento = 'gratuito';
 						if($valor_inscricao != '0.00'){
 											
@@ -230,46 +231,70 @@ class Default_IndexController extends Zend_Controller_Action
 	
 	public function noticiasAction(){$this->view->headTitle()->prepend('Notícias'); }
 
-	public function segundaViaaction(){
+	public function segundaViaAction(){
 		$this->view->headTitle()->prepend('Segunda via do Boleto');
 		if($this->_getAllParams()){
 			$data = $this->_getAllParams();
 
 			if(!empty($data['cpf'])){
+				$cliente = new Cliente();
+				$cliente = $cliente->getClientePorCpfPago($data['cpf']);
 
-				$url = 'https://www.moip.com.br/PagamentoMoIP.do';
-				$fields = array(
-								'lname' => urlencode($last_name),
-								'fname' => urlencode($first_name),
-								'title' => urlencode($title),
-								'company' => urlencode($institution),
-								'age' => urlencode($age),
-								'email' => urlencode($email),
-								'phone' => urlencode($phone)
-						);
+				if(!empty($cliente)){
+				$valor = new CSG_Evento_Registry();
+				$valor = $valor->calcularValorInscricao();
+				$celular = CSG_SMS_Send::somenteNumero($cliente->celular);
 
-						//url-ify the data for the POST
-						foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-						rtrim($fields_string, '&');
-
-						//open connection
-						$ch = curl_init();
-
-						//set the url, number of POST vars, POST data
-						curl_setopt($ch,CURLOPT_URL, $url);
-						curl_setopt($ch,CURLOPT_POST, count($fields));
-						curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
-						//execute post
-						$result = curl_exec($ch);
-
-						//close connection
-						curl_close($ch);
+					}else{
+						$this->_helper->messenger('warning',"<img class='mid_align' alt='warning' src='/img/icon_warning.png'> Desculpa, mas você precisa confirmar sua inscrição.");
+					}
 				}else{
 					$this->_helper->messenger('warning',"<img class='mid_align' alt='warning' src='/img/icon_warning.png'> Desculpa, mas você não digitou seu CPF.");
 				}
 			}
 	}
+
+	public function ajaxBuscarClienteAction(){
+    	$this->_helper->viewRenderer->setNoRender();
+		if ($this->_getAllParams()) {
+			$resposta = null;
+			$data = $this->_getAllParams();	
+			//Zend_Debug::dump($data['cpf']);
+			if(!empty($data['cpf'])){
+					$cliente = new Cliente;
+					$cliente = $cliente->getClientePorCpf($data['cpf']);
+					$cliente = $cliente[0];				
+					if($cliente){
+						$valor = new CSG_Evento_Registry();
+						$valor_inscricao = $valor->calcularValorInscricao();
+
+						$resposta['id_carteira']          = $this->evento->getMoipIdcarteira();	
+						$resposta['nome']                 = $this->evento->getTitle();
+						$resposta['descricao']            = $this->evento->getDescription();
+						$resposta['id_transacao']         = '';
+						$resposta['pagador_nome']         = CSG_Evento_Validate::retirarAcentos($cliente->nome);
+						$resposta['pagador_email']        = $cliente->email;
+						$resposta['pagador_cep']          = CSG_SMS_Send::somenteNumero($cliente->cep);
+						$resposta['pagador_logradouro']   = CSG_Evento_Validate::retirarAcentos($cliente->endereco);
+						$resposta['pagador_numero']       = '';
+						$resposta['pagador_cidade']       = CSG_Evento_Validate::retirarAcentos($cliente->cidade);
+						$resposta['pagador_estado']       = CSG_Evento_Validate::retirarAcentos($cliente->estado);
+						$resposta['pagador_bairro']       = '';
+						$resposta['pagador_cpf']          = CSG_SMS_Send::somenteNumero($cliente->cpf);
+						$resposta['pagador_rg']           = CSG_SMS_Send::somenteNumero($cliente->rg);
+						$resposta['pagador_telefone']     = CSG_SMS_Send::somenteNumero($cliente->celular);
+						$resposta['valor_transacao']      = $valor_inscricao;
+
+						$resposta['valor'] = '1';
+					}else{
+						$resposta['valor'] = '0';	
+					}
+			}else{
+				$resposta['valor'] = '0';	
+			}
+			echo json_encode($resposta);	
+		}
+    }
 	
 	public function premioDestaquePropagandaAction(){	
 		if ($this->_getAllParams()) {
@@ -505,67 +530,5 @@ class Default_IndexController extends Zend_Controller_Action
 			
 			return $retorno;
 	}
-	
-	function calcularValorInscricao($data=null){
-	
-		if($this->evento->getFormaPagamento()=='pagseguro'){
-			//PagSeguro
-			$categorias = $this->evento->getOpcaoCategoria();
-			$valores = $this->evento->getOpcaoValor();
-			
-			if($data['tipo'] =='estudante'){
-				return $valores[1];
-			}
-			
-			if($data['tipo'] == 'profissional'){
-				if($data['filiado']){
-					/*if($data['tipo_filiado']=='diretor'){
-						return $valores[0];
-					}
-					if($data['tipo_filiado']=='funcionario'){
-						return $valores[1];
-					}*/
-					return $valores[0];
-				}
-				return $valores[2];
-			}
-		}
-	
-	if($this->evento->getFormaPagamento()=='moip'){
-			/* Se Maçom fosse diferenciado
-			if($data['tipo']=='2'){
-				return '5000';
-			}*/
-		
-		
-	      //MoIP
-		  $evento = new CSG_Evento_Object();
-    	  $prazos = $evento->getPrazosDiasAntes();
-    	  $valores = $evento->getValores();
-    	  $valor_inicial = $evento->getValorInicial();
-    	  $vagas = $evento->getQuantidadeVagas();
-    	  
-    	  $hoje = new Zend_Date();
-    	  $hoje = $hoje->toString('dd/MM/YYYY');
-    	  
-    	  $dataInicio = new Zend_date($hoje, 'dd/MM/YYYY');
-          $dataFim = new Zend_date($evento->getDataEncerraInscricao(),'dd/MM/YYYY' );
-
-          $diferenca = floor( ( $dataFim->getTimestamp() - $dataInicio->getTimestamp() ) / ( 3600 * 24 ) );  
-     
-	        $valor_boleto = $valor_inicial;
-	        
-	        $qtd = count($prazos);
-	        for($i=0;$i< $qtd;$i++){
-		        if($diferenca <= $prazos[$i]){
-		        	$valor_boleto = $valores[$i];
-		        }
-	        }
-	        
-	       return $valor_boleto;
-		}
-	}
-	
-
-    
+	    
 }

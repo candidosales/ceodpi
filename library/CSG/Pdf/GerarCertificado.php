@@ -1,8 +1,6 @@
 <?php
 class CSG_Pdf_GerarCertificado{
 
-	protected $mpdf;
-
 	public function __construct($data=null){
 
 		ini_set("memory_limit","192M");

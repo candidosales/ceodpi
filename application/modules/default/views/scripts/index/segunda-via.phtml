@@ -1,0 +1,61 @@
+<section id="content">
+		<div id="content-center" class="center">
+			<div id="col-1" class="left">
+				<header class="titulo">
+					<h1>2° via do boleto</h1>
+				</header>
+				<article>
+					<p>Digite o seu CPF para gerar o boleto com valot atualizado.</p>
+					<form id="formBuscaCPF" name="formBuscaCPF" class="wufoo topLabel page" method="post" action="#">
+						<ul>
+						<li id="foli0" class=" complex    ">
+								  
+								 <span class="full">
+								  <input id="cpf" name="cpf" type="text" class="field text addr"	value="006.737.443-37" tabindex="1" />
+								    <label for="cpf">CPF</label>
+								</span>
+						</li>
+						<li class="buttons ">
+							<div>
+								<input id="saveForm" name="saveForm" type="submit" value="Buscar" />
+							</div>
+						</li>
+					</ul>
+					</form>
+					<form id="formSegundaVia" class="wufoo topLabel page" style="display:none" name="formSegundaVia" enctype="application/x-www-form-urlencoded" action="https://www.moip.com.br/PagamentoMoIP.do"  method="POST">					
+							<input type="hidden" name="id_carteira" value="" />
+						    <input type="hidden" name="nome" value="" />
+						    
+						    <input type="hidden" name="descricao" value="" />
+						    <input type="hidden" name="id_transacao" value="" />
+						    
+						    <input type="hidden" name="pagador_nome" value="" />
+						    <input type="hidden" name="pagador_email" value="" />
+						    <input type="hidden" name="pagador_cep" value="" />
+						    <input type="hidden" name="pagador_logradouro" value="" />
+						    <input type="hidden" name="pagador_numero" value="" />
+						    <input type="hidden" name="pagador_cidade" value="" />
+						    <input type="hidden" name="pagador_estado" value="" />
+						    <input type="hidden" name="pagador_bairro" value=" " />
+						    <input type="hidden" name="pagador_cpf" value="" />
+						    <input type="hidden" name="pagador_rg" value="" />
+						    <input type="hidden" name="pagador_telefone" value="" />
+						    <input type="hidden" name="valor" value="" />
+						<ul>
+						    <li class="buttons ">
+							<div>
+								<input id="segundaVia" name="saveForm" type="submit" value="2° via do boleto" />
+							</div>
+							</li>
+						</ul>
+				</form>
+				</article>
+			</div>
+			<div id="debug">
+
+			</div>
+			<aside class="right">
+				<?php include('aside.php');?>
+			</aside>
+		</div>
+	</section>
