@@ -5,17 +5,24 @@
 					<h1>Certificados</h1>
 				</header>
 				<article>
-					<p>Clique em cima do seu nome e faça o download do seu certificado digital.</p>
+					<p>Digite o seu CPF para gerar seu certificado.</p>
+					<form id="formCertificado" name="formInscricao" class="wufoo topLabel page" enctype="multipart/form-data" method="post" action="/certificado" autocomplete="on">
+						<ul>
+						<li id="foli0" class=" complex    ">
+								  
+								 <span class="full">
+								  <input id="cpf" name="cpf" type="text" class="field text addr"	value="" tabindex="1" />
+								    <label for="cpf">CPF</label>
+								</span>
+						</li>
+						<li class="buttons ">
+							<div>
+								<input id="saveForm" name="saveForm" type="submit" value="Gerar meu certificado" />
+							</div>
+						</li>
+					</ul>
+					</form>
 				</article>
-				<ul id="certificado">
-				<?php  foreach ($this->clientes as $c){?>
-				<li>
-					<a title="Certificado do <?=$c->nome;?>" href="/admin/certificado/export/id/<?=$c->id?>/module_/default">
-						<p><?=$c->nome;?></p>
-					</a>
-				</li>
-				<?php  }?>
-				</ul>
 			</div>
 			<aside class="right">
 				<?php include('aside.php');?>

@@ -237,6 +237,10 @@ class Cliente extends CSG_Db_DomainObjectAbstract{
 	public function getClientes(){
 		return $this->getMapper()->getDb()->fetchAll('SELECT c.* from cliente c WHERE c.deletado = 0 ');
 	}
+
+	public function getClientePorId($id){
+		return $this->getMapper()->getDb()->fetchRow('SELECT c.* from cliente c WHERE c.deletado = 0 AND c.id = '.$id.' ');
+	}
 	
 	public function getClientePorEmail($email){
 		return $this->getMapper()->getDb()->fetchAll('SELECT c.* FROM cliente c WHERE c.email like "%'.$email.'%" ');
@@ -244,6 +248,10 @@ class Cliente extends CSG_Db_DomainObjectAbstract{
 	
 	public function getClientePorCpf($cpf){
 		return $this->getMapper()->getDb()->fetchAll('SELECT c.* FROM cliente c WHERE c.cpf like "%'.$cpf.'%" ');
+	}
+
+	public function getClientePorCpfPago($cpf){
+		return $this->getMapper()->getDb()->fetchRow('SELECT c.* FROM cliente c WHERE c.cpf like "%'.$cpf.'%" AND c.deletado=0 AND c.confirma_pagamento=1');
 	}
 	
 	public function getClientesInscritosNosXDIas($numero_dias){

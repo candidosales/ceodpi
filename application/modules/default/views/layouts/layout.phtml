@@ -149,7 +149,7 @@
 		 }
 
 		 function bloqueia(){
-			if(<?=100-intval($this->total->inscritos)?> < 1){
+			if(<?php echo 100-intval($this->total->inscritos)?> < 1){
 				    $('h1').html('Inscrições encerradas');
 				    $('p.sub-titulo').html('<p>Para maiores informações envie um e-mail para ceodpi@demolaypi.org.br.</p>');	
 					$('form').remove();
@@ -230,6 +230,21 @@
 						minlength: "Seu celular deve conter no mínimo 11"
 					},
 					agree: "Please accept our policy"
+				}
+			});
+
+			$("#formCertificado").validate({
+				rules: {
+					cpf: {
+						required: true,
+						minlength: 11
+					},
+				},
+				messages: {
+					cpf: {
+						required: "Por favor, insira seu cpf",
+						minlength: "Seu cpf deve conter no mínimo 11"
+					},
 				}
 			});
     </script>

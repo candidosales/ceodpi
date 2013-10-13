@@ -198,9 +198,26 @@ class Default_IndexController extends Zend_Controller_Action
 	}
 	
 	public function certificadoAction(){
-		$cliente = new Cliente();
-		$this->view->clientes = $cliente->getTodosClientesPagosAZ();
 		$this->view->headTitle()->prepend('Certificado');
+		if($this->_getAllParams()){
+			$data = $this->_getAllParams();
+
+			if(!empty($data['cpf'])){
+				$cliente = new Cliente();
+				$cliente = $cliente->getClientePorCpfPago($data['cpf']);
+				//Zend_Debug::dump($cliente);die;
+
+				if(!empty($cliente)){
+					$certificado = new CSG_Pdf_GerarCertificado($cliente);
+				}else{
+					$this->_helper->messenger('warning',"<img class='mid_align' alt='warning' src='/img/icon_warning.png'> Desculpa, mas você precisa confirmar sua inscrição.");
+				}
+
+			}else{
+				$this->_helper->messenger('warning',"<img class='mid_align' alt='warning' src='/img/icon_warning.png'> Desculpa, mas você não digitou seu CPF.");
+				
+			}	
+		}
 	}
     
     public function palestrantesAction(){$this->view->headTitle()->prepend('Palestrantes');   }
@@ -212,6 +229,47 @@ class Default_IndexController extends Zend_Controller_Action
 	public function hospedagemAction(){$this->view->headTitle()->prepend('Hospedagem'); }
 	
 	public function noticiasAction(){$this->view->headTitle()->prepend('Notícias'); }
+
+	public function segundaViaaction(){
+		$this->view->headTitle()->prepend('Segunda via do Boleto');
+		if($this->_getAllParams()){
+			$data = $this->_getAllParams();
+
+			if(!empty($data['cpf'])){
+
+				$url = 'https://www.moip.com.br/PagamentoMoIP.do';
+				$fields = array(
+								'lname' => urlencode($last_name),
+								'fname' => urlencode($first_name),
+								'title' => urlencode($title),
+								'company' => urlencode($institution),
+								'age' => urlencode($age),
+								'email' => urlencode($email),
+								'phone' => urlencode($phone)
+						);
+
+						//url-ify the data for the POST
+						foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+						rtrim($fields_string, '&');
+
+						//open connection
+						$ch = curl_init();
+
+						//set the url, number of POST vars, POST data
+						curl_setopt($ch,CURLOPT_URL, $url);
+						curl_setopt($ch,CURLOPT_POST, count($fields));
+						curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+						//execute post
+						$result = curl_exec($ch);
+
+						//close connection
+						curl_close($ch);
+				}else{
+					$this->_helper->messenger('warning',"<img class='mid_align' alt='warning' src='/img/icon_warning.png'> Desculpa, mas você não digitou seu CPF.");
+				}
+			}
+	}
 	
 	public function premioDestaquePropagandaAction(){	
 		if ($this->_getAllParams()) {
