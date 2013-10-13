@@ -49,18 +49,18 @@ class Default_IndexController extends Zend_Controller_Action
 					
 					if(!empty($id)){					
 						if(!empty($data['twitter'])){
-							CSG_Evento_Service::enviarTwitter($data);
+							//CSG_Evento_Service::enviarTwitter($data);
 						}
 						
 						if(!empty($data['celular'])){
 							$data['id'] = $id;
 							$data['cliente'] = $cliente;
-							CSG_Evento_Service::enviarSms($data);
+							//CSG_Evento_Service::enviarSms($data);
 						}
 						
 						if(!empty($data['email'])){
 							$data['tipo_mensagem'] = 'inscricao';
-							CSG_Evento_Service::enviarEmail($data);
+							//CSG_Evento_Service::enviarEmail($data);
 						}
 						//Zend_Debug::dump($data);die;
 						$valor_inscricao = $this->calcularValorInscricao($data);
@@ -161,6 +161,10 @@ class Default_IndexController extends Zend_Controller_Action
 								$this->view->valor_apresentacao = CSG_Evento_Validate::formatoDinheiroMoip($valor_inscricao);
 							
 								$this->view->forma_pagamento = 'moip';
+								$this->view->idCarteira = $this->evento->getMoipIdcarteira();
+
+								$this->view->tituloEvento = $this->evento->getTitle();
+								$this->view->descricao = $this->evento->getDescription();
 							}
 						}
 						$this->view->cliente = $cliente;

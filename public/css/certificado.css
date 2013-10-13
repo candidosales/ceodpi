@@ -1,9 +1,6 @@
  @CHARSET "UTF-8";
 			@page{size:a4;}
 			
-			body{font-family:Arial;background:url(/img/back/pagina_pdf-18px-A4.jpg) no-repeat;
-			background-image-resolution:300dpi;background-image-resize:6;}
-
 			p{text-align:justify; padding-top:-3px}
 
 			.textright{text-align:right}

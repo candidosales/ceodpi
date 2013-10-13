@@ -72,6 +72,10 @@ class CSG_Evento_Object
 	public function getCertificadoFont(){
 		return $this->_evento->certificado->font;
 	}
+
+	public function getCertificadoImagem(){
+		return $this->_evento->certificado->imagem;
+	}
 	
 	public function getOpcaoCategoria(){
 		return (array) $this->_evento->opcao->categoria->toArray();
@@ -96,6 +100,10 @@ class CSG_Evento_Object
 	public function getEmailMktCor(){
 		return $this->_evento->emailmkt->cor;
 	}
+
+	public function getUrlInstagram(){
+		return $this->_evento->url->instagram;
+	}
 	
 	public function getUrlTwitter(){
 		return $this->_evento->url->twitter;
@@ -111,5 +119,9 @@ class CSG_Evento_Object
 	
 	public function getSite(){
 		return $this->_evento->site;
+	}
+
+	public function getMoipIdcarteira(){
+		return $this->_evento->moip->id_carteira;
 	}
 }

@@ -34,7 +34,7 @@ class CSG_Pdf_Cliente{
 	 	$body1='';
 	 	$final='';
 	 	$table='';
-	 	//InÃ­cio do Corpo - HTML
+	 	//Inicio do Corpo - HTML
 	
     
    $body.='

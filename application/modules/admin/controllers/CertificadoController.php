@@ -39,7 +39,7 @@ class Admin_CertificadoController extends Zend_Controller_Action
 		if(is_array($cliente)){	
 			if($cliente['confirma_pagamento']!=0){
 		
-				include("../library/mpdf54/mpdf.php");
+				include("../library/MPDF57/mpdf.php");
 					
 				// create object mpdf
 				//...,top,x)
@@ -58,9 +58,9 @@ class Admin_CertificadoController extends Zend_Controller_Action
 				
 				//Zend_Debug::dump(file_get_contents('css/pdf.css'));die;
 				// inclui css
+
 				$css = file_get_contents('css/certificado.css');
 				$mpdf->WriteHTML($css,1);
-		
 				$body = $htmlPdf->getHtml();
 				
 				//print_r($body);die;

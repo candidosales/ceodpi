@@ -1,6 +1,6 @@
 
 					<div class="widget w_twitter">
-<a class="twitter-timeline" width="300" height="250" href="https://twitter.com/ceodpi" data-widget-id="389090942923198464">Tweets de @ceodpi</a>
+<a class="twitter-timeline" width="300" height="250" lang="pt-BR" href="https://twitter.com/ceodpi" data-widget-id="389090942923198464">Tweets de @ceodpi</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 					</div>

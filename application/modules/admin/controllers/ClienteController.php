@@ -380,14 +380,13 @@ class Admin_ClienteController extends Zend_Controller_Action
 			$data=$this->_getAllParams();
 		}
 
-		include("../library/mpdf54/mpdf.php");
+		include("../library/MPDF57/mpdf.php");
 			
 		// create object mpdf
 		//...,top,x)
 			
 		$mpdf = new mPDF('win-2152','A4-L','','',20,15,35,25,10,10, 'L');
 		$mpdf->allow_charset_conversion=true;
-		$mpdf->SetFont('arial');
 		$mpdf->SetTitle($md);
 		$mpdf->SetAuthor('Candido');
 		$mpdf->SetCreator('Candido');

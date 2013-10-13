@@ -95,11 +95,11 @@
 		
 		<li class="buttons">
 		<? if($this->forma_pagamento=='moip'){?>
-			    <input type="hidden" name="id_carteira" value="yan.walter@gmail.com" />
+			    <input type="hidden" name="id_carteira" value="<?=$this->idCarteira?>" />
 			    <input type="hidden" name="valor" value='<?=$this->valor_inscricao?>' />
-			    <input type="hidden" name="nome" value="X Congresso Estadual da Ordem DeMolay Piaui" />
+			    <input type="hidden" name="nome" value="<?=$this->tituloEvento ?>" />
 			    
-			    <input type="hidden" name="descricao" value="X Congresso Estadual da Ordem DeMolay Piaui: Dias 21 a 23 de Setembro - Teresina" />
+			    <input type="hidden" name="descricao" value="<?=$this->descricao ?>" />
 			    <input type="hidden" name="id_transacao" value="<?=$this->idTransacao ?>" />
 			    
 			    <input type="hidden" name="pagador_nome" value="<?=$this->nome?>" />
@@ -133,11 +133,11 @@
 					<ul>
 						<li class="buttons">
 						<? if($this->forma_pagamento=='moip'){?>
-							<input type="hidden" name="id_carteira" value="yan.walter@gmail.com" />
+							<input type="hidden" name="id_carteira" value="<?=$this->idCarteira?>" />
 						    <input type="hidden" name="valor" value='<?=$this->valor_inscricao?>' />
-						      <input type="hidden" name="nome" value="X Congresso Estadual da Ordem DeMolay Piaui" />
+						      <input type="hidden" name="nome" value="<?=$this->tituloEvento ?>" />
 			    
-			    <input type="hidden" name="descricao" value="X Congresso Estadual da Ordem DeMolay Piaui: Dias 21 a 23 de Setembro - Teresina" />
+			    <input type="hidden" name="descricao" value="<?=$this->descricao ?>" />
 			   <input type="hidden" name="id_transacao" value="<?=$this->idTransacao ?>" />
 						    
 						    <input type="hidden" name="pagador_nome" value="<?=$this->nome?>" />
