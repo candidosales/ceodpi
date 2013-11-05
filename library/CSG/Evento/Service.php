@@ -66,9 +66,6 @@ class CSG_Evento_Service{
 						Obrigado por efetuar o pagamento de sua inscrição.
 					</p>
 					<p style="font-size:14px;font-family:Arial;line-height:18px">
-						Agora é só aguardar dia 6 de dezembro.
-					</p>
-					<p style="font-size:14px;font-family:Arial;line-height:18px">
 						Você pode acompanhar notícias sobre o evento por meio das nossas redes sociais.
 					</p>';
     		break;
