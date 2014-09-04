@@ -62,43 +62,97 @@
 					
 					</div>
 					-->
-					<!--
+
 					<div class="widget">
-						<h5>Patrocínio Bronze</h5>
+						<h5>Patrocínio</h5>
 						
 						<ul>
 							<li class="menor">
-								<a rel="nofollow" title="Stanza" href="" target="_blank">
-									<img src="/img/staff/stanza.jpg" width="90" height="52" />
+								<a rel="nofollow"  href="" target="_blank">
+									<img src="/img/staff/pref-picos.jpg" width="90" height="52" />
 								</a>
 							</li>
 							<li class="menor">
-								<a rel="nofollow" title="CONSEP" href="http://www.consep-pi.com.br/" target="_blank">
-									<img src="/img/staff/consep.jpg" width="90" height="52" />
+								<a rel="nofollow"  href="" target="_blank">
+									<img src="/img/staff/picos-1.jpg" width="90" height="52" />
 								</a>
 							</li>
 							<li class="menor">
-								<a rel="nofollow" title="COOARTE" href="http://www.cooarte.com.br/" target="_blank">
-									<img src="/img/staff/cooarte.jpg" width="90" height="52" />
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-2.jpg" width="90" height="52" />
 								</a>
 							</li>
 							<li class="menor">
-								<a rel="nofollow" title="AABB" href="http://www.teresina.aabb.com.br/" target="_blank">
-									<img src="/img/staff/aabb.jpg" width="90" height="52" />
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-3.jpg" width="90" height="52" />
 								</a>
 							</li>
 							<li class="menor">
-								<a rel="nofollow" title="Distribuidora Cristal" href="https://www.facebook.com/pages/Distribuidora-Cristal/340472189296623" target="_blank">
-									<img src="/img/staff/cristal.jpg" width="90" height="52" />
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-4.jpg" width="90" height="52" />
 								</a>
 							</li>
-						</ul>
-					
+							<li class="menor">
+								<a rel="nofollow"  href="" target="_blank">
+									<img src="/img/staff/picos-5.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-6.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-7.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-8.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow"  href="" target="_blank">
+									<img src="/img/staff/picos-9.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-10.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-11.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-12.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow"  href="" target="_blank">
+									<img src="/img/staff/picos-13.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-14.jpg" width="90" height="52" />
+								</a>
+							</li>
+							<li class="menor">
+								<a rel="nofollow" title="" href="" target="_blank">
+									<img src="/img/staff/picos-15.jpg" width="90" height="52" />
+								</a>
+							</li>
+						</ul>				
 					</div>
-					-->
 					<div class="widget">
 						<h5>Apoio</h5>
 						<ul>
+							<!--
 							<li class="menor">
 								<a rel="nofollow" title="Governo do Estado do Piauí" href="http://www.piaui.pi.gov.br/" target="_blank">
 									<img src="/img/staff/governo.jpg" width="90" height="52" />
@@ -108,7 +162,7 @@
 								<a rel="nofollow" title="SESC Piauí" href="http://www.pi.sesc.com.br/" target="_blank">
 									<img src="/img/staff/sesc.jpg" width="90" height="52" />
 								</a>
-							</li>
+							</li>-->
 							<li class="menor">
 								<a rel="nofollow" title="Grande Oriente do Estado do Piauí" href="http://www.goepi.org.br/" target="_blank">
 									<img src="/img/staff/goepi.jpg" width="90" height="52" />
@@ -127,6 +181,11 @@
 							<li class="center-1" >
 								<a title="GLEJ - Gabinete da Liderança Estadual Juvenil" href="#" target="_blank">
 									<img src="/img/staff/glej.png" width="160" height="91" />
+								</a>
+							</li>
+							<li class="center-1" >
+								<a title="Capítulo Antônio Cardoso de Albuquerque" href="#" target="_blank">
+									<img src="/img/staff/cap-picos.jpg" width="160" height="91" />
 								</a>
 							</li>
 						
